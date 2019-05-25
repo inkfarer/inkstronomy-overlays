@@ -1,0 +1,24 @@
+{
+  "name": "inkstronomy-overlays",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "RandomOink <yksaste@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "bower_components"
+  ],
+  "dependencies": {
+    "iron-flex-layout": "^2.0.3",
+    "paper-button": "^2.1.0",
+    "paper-input": "^2.2.2",
+    "gsap": "^1.20.4",
+    "sc-fitted-text": "SupportClass/sc-fitted-text#^1.1.2",
+    "nodecg-toggle": "NodeCGElements/nodecg-toggle#^1.0.0",
+    "nodecg-typeahead-input": "NodeCGElements/nodecg-typeahead-input#v2.0.0"
+  }
+}

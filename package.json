@@ -1,0 +1,73 @@
+{
+  "name": "inkstronomy-overlays",
+  "version": "0.0.0",
+  "description": "",
+  "homepage": "",
+  "author": {
+    "name": "randomoink"
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "",
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": ">=0.9",
+    "dashboardPanels": [
+      {
+        "name": "scoreboard",
+        "title": "Scores & Team names",
+        "width": 2,
+        "file": "scoreboard.html",
+        "headerColor": "#00BEBE",
+        "workspace": "inkstronomy"
+      },
+      {
+        "name": "socialsDisplay",
+        "title": "Twitter Display",
+        "width": 2,
+        "file": "socials.html",
+        "headerColor": "#00BEBE",
+        "workspace": "inkstronomy"
+      },
+      {
+        "name": "music",
+        "title": "Music",
+        "width": 3,
+        "file": "music.html",
+        "headerColor": "#00BEBE",
+        "workspace": "inkstronomy"
+      },
+      {
+        "name": "maps",
+        "title": "Map Select",
+        "width": 8,
+        "file": "maps.html",
+        "headerColor": "#00BEBE",
+        "workspace": "inkstronomy"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "main.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "break.html",
+        "width": 1920,
+        "height": 1080
+      }
+    ]
+  },
+  "dependencies": {
+    "lastfm": "^0.9.2"
+  },
+  "repository": "https://github.com/nodecg/nodecg.git",
+  "license": "MIT"
+}

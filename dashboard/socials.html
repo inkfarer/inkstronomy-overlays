@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="import" href="../bower_components/font-roboto/roboto.html">
+	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+	<link rel="import" href="../bower_components/paper-button/paper-button.html">
+	<link rel="import" href="../bower_components/paper-input/paper-input.html">
+	<link rel="import" href="../bower_components/nodecg-toggle/nodecg-toggle.html">
+	<custom-style>
+		<style include="iron-flex iron-flex-alignment" is="custom-style">
+			paper-button {
+				margin: 2px;
+				color: #FFFFFF;
+				font-family: 'Roboto', 'Noto', sans-serif;
+				font-weight: normal;
+				font-size: 14px;
+				-webkit-font-smoothing: antialiased;
+				min-width: 116px;
+			}
+			paper-input {
+				margin-top: -10px;
+				margin-left: 5px;
+				margin-right: 5px;
+				--primary-text-color: #FFFFFF;
+				--paper-input-container-focus-color: #00BEBE;
+			}
+			.nameInput {
+				margin-top: -10px;
+				margin-left: 5px;
+				margin-right: 5px;
+				--primary-text-color: #FFFFFF;
+				--paper-input-container-focus-color: #00BEBE;
+			}
+			paper-button[disabled] {
+				color: #A9AAA9;
+				background-color: #181E29 !important;
+			}
+			nodecg-toggle {
+				margin: 0 auto;
+				margin-top: 10px;
+				margin-bottom: 5px;
+				--paper-toggle-button-label-color: white;
+				--paper-toggle-button-checked-bar-color:  #645CA1;
+   			    --paper-toggle-button-checked-button-color:  #645CA1;
+				--paper-toggle-button-checked-ink-color: #645CA1;
+				margin-left: 7px;
+			}
+		</style>
+	</custom-style>
+</head>
+<body style="background-color: #2F3A4F">
+	<paper-button id="showSocials" style="background-color: #645CA1; width: 236px" onclick="sendAnimMessage()">Show social media</paper-button>
+	<div class="layout horizontal">
+		<paper-button raised id="addBox" style="background-color: #5BA664" onclick="addElementButton()">+</paper-button>
+		<paper-button raised id="removeBox" style="background-color: #C9513E" onclick="removeElementButton()">-</paper-button>
+	</div>
+	<script type="text/javascript" src="socials.js"></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="import" href="../bower_components/font-roboto/roboto.html">
+	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+	<link rel="import" href="../bower_components/paper-button/paper-button.html">
+	<link rel="import" href="../bower_components/paper-input/paper-input.html">
+	<link rel="import" href="../bower_components/nodecg-toggle/nodecg-toggle.html">
+	<link rel="import" href="../bower_components/nodecg-typeahead-input/nodecg-typeahead-input.html">
+    <custom-style>
+        <style include="iron-flex iron-flex-alignment" is="custom-style">
+            paper-button {
+				margin: 2px;
+				color: #FFFFFF;
+				font-family: 'Roboto', 'Noto', sans-serif;
+				font-weight: normal;
+				font-size: 14px;
+				-webkit-font-smoothing: antialiased;
+			}
+            .threeInARow {
+				min-width: 77px;
+				max-width: 77px;
+				background-color: #645CA1;
+			}
+            paper-button[disabled] {
+				color: #A9AAA9;
+				background-color: #181E29 !important;
+			}
+			nodecg-typeahead-input {
+				--primary-text-color: #FFFFFF;
+				--paper-input-container-focus-color: #00BEBE;
+			}
+			.alphaWinButton {
+				background-color: #5BA664;
+			}
+			.bravoWinButton {
+				background-color: #C9513E;
+			}
+			.matchNotOverButton {
+				background-color: #645CA1;
+				min-width: 147px;
+				max-width: 147px;
+			}
+			.mapSelectorThing {
+				max-width: 153px;
+				min-width: 153px;
+				margin: 0 2.5px;
+			}
+			.mapSelectNumbering {
+				color: white;
+				width: 147px;
+				text-align: center;
+				margin-bottom: -10px;
+				margin-top: 10px;
+			}
+			paper-input {
+				--primary-text-color: #FFFFFF;
+				--paper-input-container-focus-color: #00BEBE;
+			}
+			#updateMapsModesButton {
+				background-color: #645CA1;
+			}
+			#resetWinsButton {
+				background-color: #C9513E;
+			}
+			#mapShow {
+				margin-left: 35%;
+			}
+        </style>
+    </custom-style>
+</head>
+<body style="background-color: #2F3A4F">
+    <div class="layout center" id="mapCountButtons">
+		<paper-button raised id="show3Maps" class="threeInARow">3 Maps</paper-button>
+		<paper-button raised id="show5Maps" class="threeInARow">5 Maps</paper-button>
+		<paper-button raised id="show7Maps" class="threeInARow">7 Maps</paper-button>
+		<paper-button raised id="updateMapsModesButton" onclick="updateMapsModesRep()">Update maps and modes</paper-button>
+		<paper-button raised id="resetWinsButton" onclick="resetWins()">reset wins</paper-button>
+		<paper-button raised style="background-color: #5BA664;" id="mapShow">Show</paper-button>
+		<paper-button raised style="background-color: #C9513E;" id="mapHide">Hide</paper-button>
+	</div>
+	<div class="layout horizontal">
+		<div class="layout vertical mapSelectorThing">
+			<div class="mapSelectNumbering" id="mapSelectNumber1">1</div>
+			<paper-input class="matchScore" id="matchScoreInput1" label="Final Score" onchange="setFinalScore(1)"></paper-input>
+			<div class="layout horizontal">
+				<paper-button raised id="alphaWinButton1" class="alphaWinButton" onclick="setAlphaWin(1)">A Win</paper-button>
+				<paper-button raised id="bravoWinButton1" class="bravoWinButton" onclick="setBravoWin(1)">B Win</paper-button>
+			</div>
+			<paper-button raised id="matchNotOverButton1" class="matchNotOverButton" onclick="setNotOver(1)">no win yet</paper-button>
+			<nodecg-typeahead-input id="mapSelect1" label="Select map" replicant-name="splatMaps" class="input"></nodecg-typeahead-input>
+			<nodecg-typeahead-input id="modeSelect1" label="Select mode" replicant-name="splatModes" class="input"></nodecg-typeahead-input>
+		</div>
+		<div class="layout vertical mapSelectorThing">
+			<div class="mapSelectNumbering" id="mapSelectNumber2">2</div>
+			<paper-input class="matchScore" id="matchScoreInput2" label="Final Score" onchange="setFinalScore(2)"></paper-input>
+			<div class="layout horizontal">
+				<paper-button raised id="alphaWinButton2" class="alphaWinButton" onclick="setAlphaWin(2)">A Win</paper-button>
+				<paper-button raised id="bravoWinButton2" class="bravoWinButton" onclick="setBravoWin(2)">B Win</paper-button>
+			</div>
+			<paper-button raised id="matchNotOverButton2" class="matchNotOverButton" onclick="setNotOver(2)">no win yet</paper-button>
+			<nodecg-typeahead-input id="mapSelect2" label="Select map" replicant-name="splatMaps" class="input"></nodecg-typeahead-input>
+			<nodecg-typeahead-input id="modeSelect2" label="Select mode" replicant-name="splatModes" class="input"></nodecg-typeahead-input>
+		</div>
+		<div class="layout vertical mapSelectorThing">
+			<div class="mapSelectNumbering" id="mapSelectNumber3">3</div>
+			<paper-input class="matchScore" id="matchScoreInput3" label="Final Score" onchange="setFinalScore(3)"></paper-input>
+			<div class="layout horizontal">
+				<paper-button raised id="alphaWinButton3" class="alphaWinButton" onclick="setAlphaWin(3)">A Win</paper-button>
+				<paper-button raised id="bravoWinButton3" class="bravoWinButton" onclick="setBravoWin(3)">B Win</paper-button>
+			</div>
+			<paper-button raised id="matchNotOverButton3" class="matchNotOverButton" onclick="setNotOver(3)">no win yet</paper-button>
+			<nodecg-typeahead-input id="mapSelect3" label="Select map" replicant-name="splatMaps" class="input"></nodecg-typeahead-input>
+			<nodecg-typeahead-input id="modeSelect3" label="Select mode" replicant-name="splatModes" class="input"></nodecg-typeahead-input>
+		</div>
+		<div class="layout vertical mapSelectorThing">
+			<div class="mapSelectNumbering" id="mapSelectNumber4">4</div>
+			<paper-input class="matchScore" id="matchScoreInput4" label="Final Score" onchange="setFinalScore(4)"></paper-input>
+			<div class="layout horizontal">
+				<paper-button raised id="alphaWinButton4" class="alphaWinButton" onclick="setAlphaWin(4)">A Win</paper-button>
+				<paper-button raised id="bravoWinButton4" class="bravoWinButton" onclick="setBravoWin(4)">B Win</paper-button>
+			</div>
+			<paper-button raised id="matchNotOverButton4" class="matchNotOverButton" onclick="setNotOver(4)">no win yet</paper-button>
+			<nodecg-typeahead-input id="mapSelect4" label="Select map" replicant-name="splatMaps" class="input"></nodecg-typeahead-input>
+			<nodecg-typeahead-input id="modeSelect4" label="Select mode" replicant-name="splatModes" class="input"></nodecg-typeahead-input>
+		</div>
+		<div class="layout vertical mapSelectorThing">
+			<div class="mapSelectNumbering" id="mapSelectNumber5">5</div>
+			<paper-input class="matchScore" id="matchScoreInput5" label="Final Score" onchange="setFinalScore(5)"></paper-input>
+			<div class="layout horizontal">
+				<paper-button raised id="alphaWinButton5" class="alphaWinButton" onclick="setAlphaWin(5)">A Win</paper-button>
+				<paper-button raised id="bravoWinButton5" class="bravoWinButton" onclick="setBravoWin(5)">B Win</paper-button>
+			</div>
+			<paper-button raised id="matchNotOverButton5" class="matchNotOverButton" onclick="setNotOver(5)">no win yet</paper-button>
+			<nodecg-typeahead-input id="mapSelect5" label="Select map" replicant-name="splatMaps" class="input"></nodecg-typeahead-input>
+			<nodecg-typeahead-input id="modeSelect5" label="Select mode" replicant-name="splatModes" class="input"></nodecg-typeahead-input>
+		</div>
+		<div class="layout vertical mapSelectorThing">
+			<div class="mapSelectNumbering" id="mapSelectNumber6">6</div>
+			<paper-input class="matchScore" id="matchScoreInput6" label="Final Score" onchange="setFinalScore(6)"></paper-input>
+			<div class="layout horizontal">
+				<paper-button raised id="alphaWinButton6" class="alphaWinButton" onclick="setAlphaWin(6)">A Win</paper-button>
+				<paper-button raised id="bravoWinButton6" class="bravoWinButton" onclick="setBravoWin(6)">B Win</paper-button>
+			</div>
+			<paper-button raised id="matchNotOverButton6" class="matchNotOverButton" onclick="setNotOver(6)">no win yet</paper-button>
+			<nodecg-typeahead-input id="mapSelect6" label="Select map" replicant-name="splatMaps" class="input"></nodecg-typeahead-input>
+			<nodecg-typeahead-input id="modeSelect6" label="Select mode" replicant-name="splatModes" class="input"></nodecg-typeahead-input>
+		</div>
+		<div class="layout vertical mapSelectorThing">
+			<div class="mapSelectNumbering" id="mapSelectNumber7">7</div>
+			<paper-input class="matchScore" id="matchScoreInput7" label="Final Score" onchange="setFinalScore(7)"></paper-input>
+			<div class="layout horizontal">
+				<paper-button raised id="alphaWinButton7" class="alphaWinButton" onclick="setAlphaWin(7)">A Win</paper-button>
+				<paper-button raised id="bravoWinButton7" class="bravoWinButton" onclick="setBravoWin(7)">B Win</paper-button>
+			</div>
+			<paper-button raised id="matchNotOverButton7" class="matchNotOverButton" onclick="setNotOver(7)">no win yet</paper-button>
+			<nodecg-typeahead-input id="mapSelect7" label="Select map" replicant-name="splatMaps" class="input"></nodecg-typeahead-input>
+			<nodecg-typeahead-input id="modeSelect7" label="Select mode" replicant-name="splatModes" class="input"></nodecg-typeahead-input>
+		</div>
+	</div>
+    <script type="text/javascript" src="maps.js"></script>
+</body>

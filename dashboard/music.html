@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="import" href="../bower_components/paper-button/paper-button.html">
+	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+	<link rel="import" href="../bower_components/paper-input/paper-input.html">
+	<link rel="import" href="../bower_components/nodecg-toggle/nodecg-toggle.html">
+	<custom-style>
+		<style include="iron-flex iron-flex-alignment">
+			#manualcheck {
+				--paper-checkbox-label-color: white;
+				--paper-checkbox-unchecked-color: white;
+			}
+
+			#nowPlaying {
+				max-width: 364px;
+			}
+
+			#songinput {
+				margin-top: -10px;
+				margin-left: 5px;
+				margin-right: 5px;
+				--primary-text-color: #FFFFFF;
+				--paper-input-container-focus-color: #00BEBE;
+			}
+
+			.text {
+				text-align: left;
+				color: white;
+				font-weight: bold;
+				font-size: 1em;
+				border-bottom: 1px solid white;
+				margin-bottom: 5px;
+			}
+			.bg {
+				background-color: #181E29;
+				border-radius: 10px;
+				padding: 10px;
+				width: 366px;
+			}
+			#lfm {
+				height: relative;
+				min-height: 80px;
+			}
+			#man {
+				height: 100px;
+			}
+			paper-button {
+				margin: 2px;
+				color: #FFFFFF;
+				font-family: 'Roboto', 'Noto', sans-serif;
+				font-weight: normal;
+				font-size: 14px;
+				-webkit-font-smoothing: antialiased;
+			}
+			#showM {
+				margin-left: 73px;
+			}
+			paper-button[disabled] {
+				color: #A9AAA9;
+				background-color: #181E29 !important;
+			}
+			nodecg-toggle {
+				margin: 0 auto;
+				margin-top: 10px;
+				margin-bottom: 5px;
+				--paper-toggle-button-label-color: white;
+				--paper-toggle-button-checked-bar-color:  #645CA1;
+   			    --paper-toggle-button-checked-button-color:  #645CA1;
+				--paper-toggle-button-checked-ink-color: #645CA1;
+				margin-left: 7px;
+			}
+		</style>
+	</custom-style>
+</head>
+<body style="background-color: #2F3A4F">
+	<div class="layout horizontal">
+		<paper-button id="showM" raised style="background-color: #5BA664; min-width: 117px">Show</paper-button>
+		<paper-button id="hideM" raised style="background-color: #C9513E; min-width: 117px">Hide</paper-button>
+	</div>
+	<div id="lfm" class="bg">
+		<div class="text" style="margin-bottom: 10px;">Now Playing (Last.fm)</div>
+		<div id="nowPlaying" style="color: #FFFFFF;"></div>
+	</div>
+	<br>
+	<div id="man" class="bg">
+		<div class="text">Change song manually</div>
+		<nodecg-toggle replicant-name="mSongEnabled" noink>Manual song input</nodecg-toggle>
+		<paper-input label="Song name" id="songinput"></paper-input>
+	</div>
+	<script type="text/javascript" src="music.js"></script>
+</body>
+</html>

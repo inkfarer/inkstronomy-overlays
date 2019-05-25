@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="import" href="../bower_components/sc-fitted-text/sc-fitted-text.html">
+	<script src="../bower_components/gsap/src/minified/TimelineMax.min.js"></script>
+	<script src="../bower_components/gsap/src/minified/TweenMax.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">
+	<style>
+		#logo {
+			position: absolute;
+			left: 40px;
+			top: 50%;
+			transform: translateY(-50%);
+			display: block;
+			visibility: hidden;
+		}
+
+		#line {
+			position: absolute;
+			width: 5px;
+			height: 750px;
+			bottom: 165px;
+			left: 830px;
+			background-color: white;
+			box-shadow: 0px 0px 50px #D00000;
+			visibility: hidden;
+		}
+
+		#exampletext {
+			font-size: 7em;
+			left: 50px;
+			top: 300px;
+		}
+
+		.text {
+			position: absolute;
+			font-family: 'Montserrat', sans-serif;
+			color: white;
+		}
+
+		#texts {
+			position: absolute;
+			left: 835px;
+			width: 1085px;
+			height: 1080px;
+			overflow: hidden;
+			opacity: 0;
+		}
+		#song {
+			bottom: -2px;
+			right: 0px;
+			width: 1820px;
+			text-align: center;
+			font-size: 3em;
+		}
+
+		#musicBG {
+			position: absolute;
+			bottom: 35px;
+			width: 1820px;
+			right: 60px;
+			height: 3.9em;
+			overflow: hidden;
+		}
+
+		#backgroundIMG {
+			position: absolute;
+			z-index: -2;
+			width: 1920px;
+			height: 1080px;
+			background: linear-gradient(0deg, rgba(124,4,156,1) 0%, rgba(29,7,88,1) 50%, rgba(8,2,47,1) 100%);
+		}
+		
+		#stars {
+			position: absolute;
+			width: 1920px;
+			height: 1080px;
+			z-index: -1;
+		}
+		
+		#text1 {
+			font-family: 'Montserrat', sans-serif;
+			font-size: 5em;
+			color: #ffffff;
+			position: absolute;
+			width: 1820px;
+			left: 50px;
+			top: 55px;
+			text-align: center;
+		}
+
+		#mapMiddleContainer {
+			left: 845px;
+			top: 53px;
+		}
+
+		#mapLeft1Container {
+			left: 605px;
+			top: 53px;
+		}
+
+		#mapRight1Container {
+			right: 605px;
+			top: 53px;
+		}
+
+		#mapRight2Container {
+			top: 53px;
+			right: 365px;
+		}
+
+		#mapLeft2Container {
+			top: 53px;
+			left: 365px;
+		}
+
+		#mapRight3Container {
+			top: 53px;
+			right: 125px;
+		}
+
+		#mapLeft3Container {
+			top: 53px;
+			left: 125px;
+		}
+
+		.mapNameDisplay {
+			position: absolute;
+			bottom: 0px;
+			left: 0px;
+			width: 220px;
+			height: 120px;
+			background-color: #222222;
+		}
+
+		.modeDisplay {
+			position: absolute;
+			bottom: 120px;
+			left: 0px;
+			width: 220px;
+			height: 50px;
+			background-color: rgba(0, 0, 0, 0.6);
+		}
+
+		.mapNameText {
+			position: absolute;
+			width: 210px;
+			height: 110px;
+			text-align: center;
+			z-index: 2;
+			bottom: 5px;
+			font-size: 2em;
+			font-family: 'Montserrat', sans-serif;
+			color: white;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			left: 5px;
+		}
+
+		/*bottom: 5px;
+			font-size: 2.9em;
+			font-family: "Splatoon2 Regular";*/
+
+		.modeText {
+			position: absolute;
+			bottom: 120px;
+			width: 220px;
+			text-align: center;
+			z-index: 2;
+			font-size: 2.4em;
+			font-family: 'Montserrat', sans-serif;
+			color: white;
+			left: 5px;
+		}
+
+		.mapContainer {
+			height: 720px;
+			width: 220px;
+			position: absolute;
+			overflow: hidden;
+			border: 5px solid rgba(0, 0, 0, 0.75);
+			background-color: #222222;
+			z-index: -1;
+		}
+
+		.mapImage {
+			position: absolute;
+			right: -425px;
+			z-index: -1;
+		}
+
+		#text1Line {
+			position: absolute;
+			width: 1700px;
+			left: 110px;
+			top: 160px;
+			height: 7px;
+			background-color: #ffffff;
+		}
+
+		#containersDiv {
+			position: absolute;
+			width: 1920px;
+			height: 920px;
+			top: 167px;
+			overflow: hidden;
+		}
+		.mapWinnerDisplay {
+			background-color: #222222;
+			top: -155px;
+			position: absolute;
+			height: 120px;
+			width: 220px;
+			opacity: 1;
+		}
+		.mapWinnerText {
+			/*i bet half of these do nothing
+			this took over an HOUR to get right... help*/
+			font-family: 'Montserrat', sans-serif;
+			font-size: 1.75em;
+			position: absolute;
+			/*top: 39px;*/
+			left: 5px;
+			width: 210px;
+			text-align: center;
+			display: -webkit-box;
+  			-webkit-line-clamp: 3;
+  			-webkit-box-orient: vertical;
+			align-items: center;
+			justify-content: center;
+			color: white;
+			overflow: hidden;
+			max-height: 3.6em;
+			transform: translate(0, -50%);
+			top: 50%;
+
+		}
+		.mapScoreDisplay {
+			position: absolute;
+			top: -35px;
+			height: 35px;
+			width: 220px;
+			background-color: rgba(0, 0, 0, 0.6);
+			font-family: 'Montserrat', sans-serif;
+			text-align: center;
+			color: white;
+			font-size: 1.75em;
+		}
+	</style>
+</head>
+<body onload="pageLoadFunction()">
+	<div id="backgroundIMG"></div>
+	<img id="stars" src="stars.png">
+	<div id="text1">Upcoming Stages</div>
+	<div id="text1Line"></div>
+	<!--Map containers will be counted from the middle - Something like this:
+	[Left3] [Left2] [Left1] [Middle] [Right1] [Right2] [Right3]-->
+	<div id="containersDiv">
+		<div id="mapMiddleContainer" class="mapContainer">
+			<sc-fitted-text max-width="210" id="mapMiddleModeText" class="modeText" text="???" align="center"></sc-fitted-text>
+			<div id="mapMiddleNameText" class="mapNameText" style="font-size: 2em">We don't know.</div>
+			<div id="mapMiddleName" class="mapNameDisplay"></div>
+			<div id="mapMiddleMode" class="modeDisplay"></div>
+			<img id="mapMiddleDisplay" class="mapImage" height="600" src=question-mark.png>
+			<div id="mapMiddleWinnerDisplay" class="mapWinnerDisplay">
+				<div id="mapMiddleWinnerText" class="mapWinnerText" style="font-size: 1.75em">team name goes here :eyes:</div>
+			</div>
+			<div id="mapMiddleScoreDisplay" class="mapScoreDisplay">255-175</div>
+		</div>
+		<div id="mapLeft1Container" class="mapContainer">
+			<sc-fitted-text max-width="210" id="mapLeft1ModeText" class="modeText" text="???" align="center"></sc-fitted-text>
+			<div id="mapLeft1NameText" class="mapNameText" style="font-size: 2em">We don't know.</div>
+			<div id="mapLeft1Name" class="mapNameDisplay"></div>
+			<div id="mapLeft1Mode" class="modeDisplay"></div>
+			<img id="mapLeft1Display" class="mapImage" height="600" src=question-mark.png>
+			<div id="mapLeft1WinnerDisplay" class="mapWinnerDisplay">
+				<div id="mapLeft1WinnerText" class="mapWinnerText" style="font-size: 1.75em">team name goes here :eyes:</div>
+			</div>
+			<div id="mapLeft1ScoreDisplay" class="mapScoreDisplay">255-175</div>
+		</div>
+		<div id="mapRight1Container" class="mapContainer">
+			<sc-fitted-text max-width="210" id="mapRight1ModeText" class="modeText" text="???" align="center"></sc-fitted-text>
+			<div id="mapRight1NameText" class="mapNameText" style="font-size: 2em">We don't know.</div>
+			<div id="mapRight1Name" class="mapNameDisplay"></div>
+			<div id="mapRight1Mode" class="modeDisplay"></div>
+			<img id="mapRight1Display" class="mapImage" height="600" src=question-mark.png>
+			<div id="mapRight1WinnerDisplay" class="mapWinnerDisplay">
+				<div id="mapRight1WinnerText" class="mapWinnerText" style="font-size: 1.75em">team name goes here :eyes:</div>
+			</div>
+			<div id="mapRight1ScoreDisplay" class="mapScoreDisplay">255-175</div>
+		</div>
+		<div id="mapRight2Container" class="mapContainer">
+			<sc-fitted-text max-width="210" id="mapRight2ModeText" class="modeText" text="???" align="center"></sc-fitted-text>
+			<div id="mapRight2NameText" class="mapNameText" style="font-size: 2em">We don't know.</div>
+			<div id="mapRight2Name" class="mapNameDisplay"></div>
+			<div id="mapRight2Mode" class="modeDisplay"></div>
+			<img id="mapRight2Display" class="mapImage" height="600" src=question-mark.png>
+			<div id="mapRight2WinnerDisplay" class="mapWinnerDisplay">
+				<div id="mapRight2WinnerText" class="mapWinnerText" style="font-size: 1.75em">team name goes here :eyes:</div>
+			</div>
+			<div id="mapRight2ScoreDisplay" class="mapScoreDisplay">255-175</div>
+		</div>
+		<div id="mapLeft2Container" class="mapContainer">
+			<sc-fitted-text max-width="210" id="mapLeft2ModeText" class="modeText" text="???" align="center"></sc-fitted-text>
+			<div id="mapLeft2NameText" class="mapNameText" style="font-size: 2em">We don't know.</div>
+			<div id="mapLeft2Name" class="mapNameDisplay"></div>
+			<div id="mapLeft2Mode" class="modeDisplay"></div>
+			<img id="mapLeft2Display" class="mapImage" height="600" src=question-mark.png>
+			<div id="mapLeft2WinnerDisplay" class="mapWinnerDisplay">
+				<div id="mapLeft2WinnerText" class="mapWinnerText" style="font-size: 1.75em">team name goes here :eyes:</div>
+			</div>
+			<div id="mapLeft2ScoreDisplay" class="mapScoreDisplay">255-175</div>
+		</div>
+		<div id="mapRight3Container" class="mapContainer">
+			<sc-fitted-text max-width="210" id="mapRight3ModeText" class="modeText" text="???" align="center"></sc-fitted-text>
+			<div id="mapRight3NameText" class="mapNameText" style="font-size: 2em">We don't know.</div>
+			<div id="mapRight3Name" class="mapNameDisplay"></div>
+			<div id="mapRight3Mode" class="modeDisplay"></div>
+			<img id="mapRight3Display" class="mapImage" height="600" src=question-mark.png>
+			<div id="mapRight3WinnerDisplay" class="mapWinnerDisplay">
+				<div id="mapRight3WinnerText" class="mapWinnerText" style="font-size: 1.75em">team name goes here :eyes:</div>
+			</div>
+			<div id="mapRight3ScoreDisplay" class="mapScoreDisplay">255-175</div>
+		</div>
+		<div id="mapLeft3Container" class="mapContainer">
+			<sc-fitted-text max-width="210" id="mapLeft3ModeText" class="modeText" text="???" align="center"></sc-fitted-text>
+			<div id="mapLeft3NameText" class="mapNameText" style="font-size: 2em">We don't know.</div>
+			<div id="mapLeft3Name" class="mapNameDisplay"></div>
+			<div id="mapLeft3Mode" class="modeDisplay"></div>
+			<img id="mapLeft3Display" class="mapImage" height="600" src=question-mark.png>
+			<div id="mapLeft3WinnerDisplay" class="mapWinnerDisplay">
+				<div id="mapLeft3WinnerText" class="mapWinnerText" style="font-size: 1.75em">team name goes here :eyes:</div>
+			</div>
+			<div id="mapLeft3ScoreDisplay" class="mapScoreDisplay">255-175</div>
+		</div>
+	</div>
+	<div id="musicBG">
+		<sc-fitted-text max-width="1820" text="♫ whew lad looks like the overlay broke ♫" id="song" class="text" align="center"></sc-fitted-text>
+	</div>
+	<script type="text/javascript" src="break.js"></script>
+</body>
+</html>
