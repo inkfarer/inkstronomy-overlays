@@ -8,6 +8,8 @@ const teamAname = nodecg.Replicant('teamAname');
 const teamBname = nodecg.Replicant('teamBname');
 const socialHandles = nodecg.Replicant('socialHandles', {defaultValue: new Array()});
 var socialTL = new TimelineMax();
+const teamAcolor = nodecg.Replicant('teamAcolor');
+const teamBcolor = nodecg.Replicant('teamBcolor');
 
 ctx.beginPath();
 ctx.rect(5, 0, 400, 120);
@@ -88,3 +90,11 @@ var colorNameToHex = {
     "Sky Blue":"#007EDC",
     "Mustard":"#CE8003"
 }
+
+teamAcolor.on('change', (newValue, oldValue) => {
+    TweenMax.to("#teamAcolorDisplay", 0.5, {backgroundColor: colorNameToHex[newValue]});
+});
+
+teamBcolor.on('change', (newValue, oldValue) => {
+    TweenMax.to("#teamBcolorDisplay", 0.5, {backgroundColor: colorNameToHex[newValue]});
+});

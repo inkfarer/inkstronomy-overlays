@@ -2,10 +2,6 @@ const elementsCount = nodecg.Replicant('elementsCount');
 const socialHandles = nodecg.Replicant('socialHandles', {defaultValue: new Array()});
 var counter = 0;
 
-socialHandles.on('change', (newValue, oldValue) => {
-    
-});
-
 NodeCG.waitForReplicants(socialHandles).then(() => {
     updateSocialInputs();
 })
