@@ -12,7 +12,7 @@ const teamAcolor = nodecg.Replicant('teamAcolor');
 const teamBcolor = nodecg.Replicant('teamBcolor');
 
 ctx.beginPath();
-ctx.rect(5, 0, 400, 120);
+ctx.rect(0, 0, 400, 120);
 ctx.fillStyle = "#222222";
 ctx.fill();
 ctx.beginPath();
@@ -20,7 +20,7 @@ ctx.rect(400, 0, 50, 120);
 ctx.fillStyle = "#0e0e0e";
 ctx.fill();
 ctx.beginPath();
-ctx.rect(5, 0, 445, 30);
+ctx.rect(0, 0, 450, 30);
 ctx.fillStyle = "#151515";
 ctx.fill();
 ctx.beginPath();
@@ -43,10 +43,13 @@ teamBscore.on('change', (newValue, oldValue) => {
 });
 
 scHidden.on('change', (newValue, oldValue) => {
+    var scTL = new TimelineMax();
     if (newValue) {
-        TweenMax.to("#scoreboard1", 1, { ease: Power2.easeIn, left: -500});
+        scTL.add(TweenMax.to("#scoreboardContents", 0.75, { ease: Power2.easeIn, left: -500}));
+        scTL.add(TweenMax.to("#omegaline", 0.5, {ease: Power2.easeInOut, height: 0, top: 60}));
     } else {
-        TweenMax.to("#scoreboard1", 1, {left: 50});
+        scTL.add(TweenMax.to("#omegaline", 0.5, {ease: Power2.easeInOut, height: 120, top: 0}));
+        scTL.add(TweenMax.to("#scoreboardContents", 0.75, { ease: Power2.easeOut, left: 5}));
     }
 });
 
@@ -69,14 +72,14 @@ function addSocialTL(number) {
 nodecg.listenFor('showSocialsAnim', message => {
     socialNotifText.innerText = socialHandles.value[0];
     socialTL.add(TweenMax.to("#socialNotifLine", 0.5, {ease: Power2.easeInOut,height: 100, top: 0}));
-    socialTL.add(TweenMax.to("#socialNotifDiv", 0.5, {ease: Power2.easeOut,left: 5}));
+    socialTL.add(TweenMax.to("#socialNotifDiv", 0.75, {ease: Power2.easeOut,left: 5}));
     socialTL.add(TweenMax.to({}, 1, {}));
     for(i=1;i<socialHandles.value.length;i++) {
         if (socialHandles.value[i] != "") {
             addSocialTL(i);
         }
     }
-    socialTL.add(TweenMax.to("#socialNotifDiv", 0.5, {ease: Power2.easeIn,left: -400}));
+    socialTL.add(TweenMax.to("#socialNotifDiv", 0.75, {ease: Power2.easeIn,left: -400}));
     socialTL.add(TweenMax.to("#socialNotifLine", 0.5, {ease: Power2.easeInOut,height: 0, top: 50}));
 });
 

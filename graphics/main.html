@@ -31,7 +31,7 @@
 			width: 250px;
 			font-family: 'Montserrat', sans-serif;
 			bottom: 79px;
-			left: 10px;
+			left: 5px;
 			height: 45px;
 		}
 		#p1graphic {
@@ -74,7 +74,7 @@
 		}
 		#c {
 			position: absolute;
-			left: 79px;
+			left: 74px;
 			color: white;
 			font-family: 'Montserrat', sans-serif;
 			font-size: 5em;
@@ -83,14 +83,16 @@
 		#scoreboard1 {
 			position: absolute;
 			top: 35px;
-			left: 50px;
+			left: 45px;
 			width: 1000px;
+			height: 120px;
+			overflow: hidden;
 		}
 		.nameDisplay {
 			color: white;
 			font-family: 'Montserrat', sans-serif;
 			font-size: 30px;
-			left: 50px;
+			left: 45px;
 			position: absolute;
 		}
 		#teamAnameDisplay {
@@ -103,7 +105,7 @@
 			width: 30px;
 			height: 30px;
 			position: absolute;
-			left: 13px;
+			left: 8px;
 			border-radius: 10px;
 		}
 		#teamAcolorDisplay {
@@ -119,8 +121,8 @@
 			position: absolute;
 			width: 5px;
 			height: 120px;
-			top: 0;
-
+			top: 0px;
+			z-index: 50;
 		}
 		#socialNotif {
 			position: absolute;
@@ -186,19 +188,26 @@
 			left: -400px;
 			top: 0;
 		}
+		#scoreboardContents {
+			position: absolute;
+			left: 5px;
+			top: 0;
+		}
 	</style>
 </head>
 <body>
 	<div id="scoreboard1">
-		<canvas id="scCanvas" width="500" height="120"></canvas>
 		<div id="omegaline"></div>
-		<sc-fitted-text text="javascript machine broke oops" max-width="435" id="staged"></sc-fitted-text>
-		<div id="teamAcolorDisplay" class="colorDisplay"></div>
-		<div id="teamBcolorDisplay" class="colorDisplay"></div>
-		<div id="teamAscoreDisplay" class="scoreDisplay"></div>
-		<div id="teamBscoreDisplay" class="scoreDisplay"></div>
-		<sc-fitted-text max-width="335" id="teamAnameDisplay" class="nameDisplay" align="left"></sc-fitted-text>
-		<sc-fitted-text max-width="335" id="teamBnameDisplay" class="nameDisplay" align="left"></sc-fitted-text>
+		<div id="scoreboardContents">
+			<canvas id="scCanvas" width="500" height="120"></canvas>
+			<sc-fitted-text text="javascript machine broke oops" max-width="435" id="staged"></sc-fitted-text>
+			<div id="teamAcolorDisplay" class="colorDisplay"></div>
+			<div id="teamBcolorDisplay" class="colorDisplay"></div>
+			<div id="teamAscoreDisplay" class="scoreDisplay"></div>
+			<div id="teamBscoreDisplay" class="scoreDisplay"></div>
+			<sc-fitted-text max-width="335" id="teamAnameDisplay" class="nameDisplay" align="left"></sc-fitted-text>
+			<sc-fitted-text max-width="335" id="teamBnameDisplay" class="nameDisplay" align="left"></sc-fitted-text>
+		</div>
 	</div>
 	<div id="socialNotif">
 		<div id="socialNotifLine"></div>
