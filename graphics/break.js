@@ -278,9 +278,9 @@ function animate3Maps(bool) {
         MapsTL.add(TweenMax.to("#mapLeft2Container", 0, {ease: Power2.easeIn, top: -730}))
         MapsTL.add(TweenMax.to("#mapRight2Container", 0, {ease: Power2.easeIn, top: -730}));
     } else {
-        MapsTL.add(TweenMax.to(["#backgroundIMG", "#stars"], 0.8, {ease: Power2.easeInOut, top: 0}))
-        MapsTL.add(TweenMax.to("#text1", 0.8, {ease: Power2.easeInOut, top: 55, delay: -0.8}));
-        MapsTL.add(TweenMax.to("#text1Line", 0.8, {ease: Power2.easeInOut, top: 160, delay: -0.8}));
+        MapsTL.add(TweenMax.to(["#backgroundIMG", "#stars"], 0.8, {ease: Power2.easeOut, top: 0}))
+        MapsTL.add(TweenMax.to("#text1", 0.8, {ease: Power2.easeOut, top: 55, delay: -0.8}));
+        MapsTL.add(TweenMax.to("#text1Line", 0.8, {ease: Power2.easeOut, top: 160, delay: -0.8}));
         MapsTL.add(TweenMax.to("#mapLeft1Container", 1, {top: 53, delay: -0.2}))
         MapsTL.add(TweenMax.to("#mapMiddleContainer", 1, {top: 53, delay: -0.8}))
         MapsTL.add(TweenMax.to("#mapRight1Container", 1, {top: 53, delay: -0.8}))
@@ -301,9 +301,9 @@ function animate5Maps(bool) {
         MapsTL.add(TweenMax.to("#mapLeft3Container", 0, {ease: Power2.easeIn, top: -730}))
         MapsTL.add(TweenMax.to("#mapRight3Container", 0, {ease: Power2.easeIn, top: -730}));
     } else {
-        MapsTL.add(TweenMax.to(["#backgroundIMG", "#stars"], 0.8, {ease: Power2.easeInOut, top: 0}))
-        MapsTL.add(TweenMax.to("#text1", 0.8, {ease: Power2.easeInOut, top: 55, delay: -0.8}));
-        MapsTL.add(TweenMax.to("#text1Line", 0.8, {ease: Power2.easeInOut, top: 160, delay: -0.8}));
+        MapsTL.add(TweenMax.to(["#backgroundIMG", "#stars"], 0.8, {ease: Power2.easeOut, top: 0}))
+        MapsTL.add(TweenMax.to("#text1", 0.8, {ease: Power2.easeOut, top: 55, delay: -0.8}));
+        MapsTL.add(TweenMax.to("#text1Line", 0.8, {ease: Power2.easeOut, top: 160, delay: -0.8}));
         MapsTL.add(TweenMax.to("#mapLeft2Container", 1, {top: 53, delay: -0.2}))
         MapsTL.add(TweenMax.to("#mapLeft1Container", 1, {top: 53, delay: -0.8}))
         MapsTL.add(TweenMax.to("#mapMiddleContainer", 1, {top: 53, delay: -0.8}))
@@ -316,33 +316,33 @@ function animate5Maps(bool) {
 
 function animate7Maps(bool) {
     if (bool) {
-        MapsTL.add(TweenMax.to("#mapLeft3Container", 0.6, {ease: Power2.easeIn, top: -730}))
-        MapsTL.add(TweenMax.to("#mapLeft2Container", 0.6, {ease: Power2.easeIn, top: -730, delay: -0.4}))
-        MapsTL.add(TweenMax.to("#mapLeft1Container", 0.6, {ease: Power2.easeIn, top: -730, delay: -0.4}))
-        MapsTL.add(TweenMax.to("#mapMiddleContainer", 0.6, {ease: Power2.easeIn, top: -730, delay: -0.4}))
-        MapsTL.add(TweenMax.to("#mapRight1Container", 0.6, {ease: Power2.easeIn, top: -730, delay: -0.4}))
-        MapsTL.add(TweenMax.to("#mapRight2Container", 0.6, {ease: Power2.easeIn, top: -730, delay: -0.4}))
-        MapsTL.add(TweenMax.to("#mapRight3Container", 0.6, {ease: Power2.easeIn, top: -730, delay: -0.4}));
+        MapsTL.add(TweenMax.to("#mapLeft3Container", 0.9, {ease: Power2.easeIn, top: -730}))
+        MapsTL.add(TweenMax.to("#mapLeft2Container", 0.9, {ease: Power2.easeIn, top: -730, delay: -0.8}))
+        MapsTL.add(TweenMax.to("#mapLeft1Container", 0.9, {ease: Power2.easeIn, top: -730, delay: -0.8}))
+        MapsTL.add(TweenMax.to("#mapMiddleContainer", 0.9, {ease: Power2.easeIn, top: -730, delay: -0.8}))
+        MapsTL.add(TweenMax.to("#mapRight1Container", 0.9, {ease: Power2.easeIn, top: -730, delay: -0.8}))
+        MapsTL.add(TweenMax.to("#mapRight2Container", 0.9, {ease: Power2.easeIn, top: -730, delay: -0.8}))
+        MapsTL.add(TweenMax.to("#mapRight3Container", 0.9, {ease: Power2.easeIn, top: -730, delay: -0.8}));
     } else {
-        MapsTL.add(TweenMax.to(["#backgroundIMG", "#stars"], 0.8, {ease: Power2.easeInOut, top: 0}))
-        MapsTL.add(TweenMax.to("#text1", 0.8, {ease: Power2.easeInOut, top: 55, delay: -0.8}))
-        MapsTL.add(TweenMax.to("#text1Line", 0.8, {ease: Power2.easeInOut, top: 160, delay: -0.8}))
-        MapsTL.add(TweenMax.to("#mapLeft3Container", 0.6, {top: 53, delay: -0.2}))
-        MapsTL.add(TweenMax.to("#mapLeft2Container", 0.6, {top: 53, delay: -0.4}))
-        MapsTL.add(TweenMax.to("#mapLeft1Container", 0.6, {top: 53, delay: -0.4}))
-        MapsTL.add(TweenMax.to("#mapMiddleContainer", 0.6, {top: 53, delay: -0.4}))
-        MapsTL.add(TweenMax.to("#mapRight1Container", 0.6, {top: 53, delay: -0.4}))
-        MapsTL.add(TweenMax.to("#mapRight2Container", 0.6, {top: 53, delay: -0.4}))
-        MapsTL.add(TweenMax.to("#mapRight3Container", 0.6, {top: 53, delay: -0.4}));
+        MapsTL.add(TweenMax.to(["#backgroundIMG", "#stars"], 0.8, {ease: Power2.easeOut, top: 0}))
+        MapsTL.add(TweenMax.to("#text1", 0.8, {ease: Power2.easeOut, top: 55, delay: -0.8}))
+        MapsTL.add(TweenMax.to("#text1Line", 0.8, {ease: Power2.easeOut, top: 160, delay: -0.8}))
+        MapsTL.add(TweenMax.to("#mapLeft3Container", 0.9, {top: 53, delay: -0.2}))
+        MapsTL.add(TweenMax.to("#mapLeft2Container", 0.9, {top: 53, delay: -0.8}))
+        MapsTL.add(TweenMax.to("#mapLeft1Container", 0.9, {top: 53, delay: -0.8}))
+        MapsTL.add(TweenMax.to("#mapMiddleContainer", 0.9, {top: 53, delay: -0.8}))
+        MapsTL.add(TweenMax.to("#mapRight1Container", 0.9, {top: 53, delay: -0.8}))
+        MapsTL.add(TweenMax.to("#mapRight2Container", 0.9, {top: 53, delay: -0.8}))
+        MapsTL.add(TweenMax.to("#mapRight3Container", 0.9, {top: 53, delay: -0.8}));
         
     }
 }
 
 function animBG(bool) {
     if (bool) {
-        MapsTL.add(TweenMax.to(["#backgroundIMG", "#stars"], 0.8, {ease: Power2.easeInOut, top: -1080}))
-        MapsTL.add(TweenMax.to("#text1", 0.8, {ease: Power2.easeInOut, top: -1025, delay: -0.8}))
-        MapsTL.add(TweenMax.to("#text1Line", 0.8, {ease: Power2.easeInOut, top: -920, delay: -0.8}));
+        MapsTL.add(TweenMax.to(["#backgroundIMG", "#stars"], 0.8, {ease: Power2.easeIn, top: -1080}))
+        MapsTL.add(TweenMax.to("#text1", 0.8, {ease: Power2.easeIn, top: -1025, delay: -0.8}))
+        MapsTL.add(TweenMax.to("#text1Line", 0.8, {ease: Power2.easeIn, top: -920, delay: -0.8}));
     }
 }
 
@@ -368,7 +368,6 @@ function updateSongText() {
 }
 
 nowPlaying.on("change", (newValue, oldValue) => {
-    // this if condition fixes unnecessary animation triggers when the dashboard gets refreshed
     if (newValue !== oldValue && !mSongEnabled.value) {
         updateSongText();
     }

@@ -91,7 +91,9 @@ var colorNameToHex = {
     "Orange":"#FB5C03",
     "Turquoise":"#0CAE6E",
     "Sky Blue":"#007EDC",
-    "Mustard":"#CE8003"
+    "Mustard":"#CE8003",
+    "Default pink":"#f02d7d",
+    "Default green":"#19D719"
 }
 
 teamAcolor.on('change', (newValue, oldValue) => {

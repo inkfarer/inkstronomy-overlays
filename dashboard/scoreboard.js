@@ -122,7 +122,9 @@ scHidden.on('change', (newValue, OldValue) => {
     }
 });
 
-splatColors.value = ["Light Blue",
+splatColors.value = ["Default pink",
+"Default green",
+"Light Blue",
 "Purple",
 "Yellow",
 "Pink",
