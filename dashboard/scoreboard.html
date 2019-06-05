@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
 	<link rel="import" href="../bower_components/font-roboto/roboto.html">
 	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 	<link rel="import" href="../bower_components/paper-button/paper-button.html">
 	<link rel="import" href="../bower_components/paper-input/paper-input.html">
-	<link rel="import" href="../bower_components/nodecg-typeahead-input/nodecg-typeahead-input.html">
-	<script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
 	<custom-style>
 		<style include="iron-flex iron-flex-alignment" is="custom-style">
 			paper-button {
@@ -54,6 +53,35 @@
 				--paper-input-container-focus-color: #00BEBE;
 				--primary-text-color: #FFFFFF;
 			}
+			select {
+				max-width: 113.5px;
+				min-width: 113.5px;
+				margin-left: 5px;
+				font-size: 16px;
+				margin-bottom: 5px;
+				border: 0px;
+				border-bottom: 1px solid #737373;
+				outline: 0px;
+				color: white;
+				background-color: rgba(0, 0, 0, 0);
+				padding: 4px;
+				padding-left: 0px;
+				font-family: 'Roboto', 'Noto', sans-serif;
+			}
+			select:focus {
+				border-bottom: 1px solid #00BEBE;
+			}
+			option {
+				color: black;
+			}
+			.colorSelectLabel {
+				color: #737373;
+				font-size: 12px;
+				margin-left: 5px;
+			}
+			#colorSelectBLabel {
+				margin-left: 8px;
+			}
 		</style>
 	</custom-style>
 </head>
@@ -76,8 +104,36 @@
 		<paper-input label="Team B name" class="nameInput" id="teamBinput"></paper-input>
 	</div>
 	<div class="layout horizontal">
-		<nodecg-typeahead-input id="colorSelectA" label="Team A color" replicant-name="splatColors" class="input"></nodecg-typeahead-input>
-		<nodecg-typeahead-input id="colorSelectB" label="Team B color" replicant-name="splatColors" class="input"></nodecg-typeahead-input>
+		<div class="layout vertical">
+			<div id="colorSelectALabel" class="colorSelectLabel">Team A Color</div>
+			<select id="colorSelectA">
+				<option value="Default pink" selected>Default pink</option>
+				<option value="Default green">Default green</option>
+				<option value="Light Blue">Light Blue</option>
+				<option value="Purple">Purple</option>
+				<option value="Yellow">Yellow</option>
+				<option value="Pink">Pink</option>
+				<option value="Orange">Orange</option>
+				<option value="Turquoise">Turquoise</option>
+				<option value="Sky Blue">Sky Blue</option>
+				<option value="Mustard">Mustard</option>
+			</select>
+		</div>
+		<div class="layout vertical">
+			<div id="colorSelectBLabel" class="colorSelectLabel">Team B Color</div>
+			<select id="colorSelectB">
+				<option value="Default pink">Default pink</option>
+				<option value="Default green" selected>Default green</option>
+				<option value="Light Blue">Light Blue</option>
+				<option value="Purple">Purple</option>
+				<option value="Yellow">Yellow</option>
+				<option value="Pink">Pink</option>
+				<option value="Orange">Orange</option>
+				<option value="Turquoise">Turquoise</option>
+				<option value="Sky Blue">Sky Blue</option>
+				<option value="Mustard">Mustard</option>
+			</select>
+		</div>
 	</div>
 	<paper-button id="updateColor" raised style="background-color: #645CA1; width: 100%" onclick="updateColors()">update colors</paper-button>
 	<paper-input label="Flavor text" class="nameInput" id="stageInput"></paper-input>

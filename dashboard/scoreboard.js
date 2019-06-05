@@ -6,7 +6,6 @@ const teamAname = nodecg.Replicant('teamAname');
 const teamBname = nodecg.Replicant('teamBname');
 const nextTeamAname = nodecg.Replicant('nextTeamAname');
 const nextTeamBname = nodecg.Replicant('nextTeamBname');
-const splatColors = nodecg.Replicant('splatColors');
 const teamAcolor = nodecg.Replicant('teamAcolor');
 const teamBcolor = nodecg.Replicant('teamBcolor');
 
@@ -121,14 +120,3 @@ scHidden.on('change', (newValue, OldValue) => {
         hideSC.disabled = false;
     }
 });
-
-splatColors.value = ["Default pink",
-"Default green",
-"Light Blue",
-"Purple",
-"Yellow",
-"Pink",
-"Orange",
-"Turquoise",
-"Sky Blue",
-"Mustard"]

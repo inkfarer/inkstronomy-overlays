@@ -35,13 +35,13 @@ show7Maps.onclick = () => {
     mapCount.value = 7;
 };
 
-NodeCG.waitForReplicants(finalScores, selectedMaps, selectedModes).then(() => {
+/*NodeCG.waitForReplicants(finalScores, selectedMaps, selectedModes).then(() => {
     for (i=1; i <= 7; i++) {
         updateFinalScoreDisplay(i);
         updateMapDisplay(i);
         updateModeDisplay(i);
     }
-})
+})*/
 
 mapWinners.on('change', (newValue, OldValue) => {
     for (i=1; i <= 7; i++) {
@@ -49,14 +49,13 @@ mapWinners.on('change', (newValue, OldValue) => {
     }
 });
 
-/* old code, theoretically not really needed, instead handled by the waitForReplicants command above
 finalScores.on('change', (newValue, OldValue) => {
     for (i=1; i <= 7; i++) {
         updateFinalScoreDisplay(i);
     }
-});*/
+});
 
-/*selectedMaps.on('change', (newValue, OldValue) => {
+selectedMaps.on('change', (newValue, OldValue) => {
     for (i=1; i <= 7; i++) {
         updateMapDisplay(i);
     }
@@ -66,7 +65,7 @@ selectedModes.on('change', (newValue, OldValue) => {
     for (i=1; i <= 7; i++) {
         updateModeDisplay(i);
     }
-});*/
+});
 
 function updateMapsModesRep() {
     for (i=1; i <= 7; i++) {
