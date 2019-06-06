@@ -19,6 +19,5 @@
     "gsap": "^1.20.4",
     "sc-fitted-text": "SupportClass/sc-fitted-text#^1.1.2",
     "nodecg-toggle": "NodeCGElements/nodecg-toggle#^1.0.0",
-    "nodecg-typeahead-input": "NodeCGElements/nodecg-typeahead-input#v2.0.0"
   }
 }
