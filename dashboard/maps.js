@@ -1,6 +1,4 @@
 const mapCount = nodecg.Replicant('mapCount', { defaultValue: 7});
-const splatMaps = nodecg.Replicant('splatMaps');
-const splatModes = nodecg.Replicant('splatModes');
 const mapWinners = nodecg.Replicant('mapWinners', {defaultValue: [0, 0, 0, 0, 0, 0, 0]});
 // mapWinners: 0 - Match isn't over yet, 1 - Alpha wins, 2 - Bravo wins
 const finalScores = nodecg.Replicant('finalScores', {defaultValue: ["", "", "", "", "", "", ""]});
@@ -181,7 +179,7 @@ mapCount.on('change', (newValue, OldValue) => {
     updateMapSelectText();
 });
 
-splatMaps.value = ["We don't know.",
+var splatMaps1 = ["We don't know.",
 "Ancho-V Games",
 "Arowana Mall",
 "Blackbelly Skatepark",
@@ -206,9 +204,61 @@ splatMaps.value = ["We don't know.",
 "Wahoo World",
 "Walleye Warehouse"];
 
-splatModes.value = ["???",
+var splatModes1 = ["???",
 "Clam Blitz",
 "Tower Control",
 "Rainmaker",
 "Splat Zones",
 "Turf War"];
+
+function addMapOptions(number) {
+    if (number >= 1 && number <= 7) {
+        var mapSelect = document.getElementById("mapSelect" + number);
+        for (i = 0; i < splatMaps1.length; i++) {
+            var opt = document.createElement("option");
+            opt.value = splatMaps1[i];
+            opt.text = splatMaps1[i];
+            mapSelect.add(opt);
+        }
+    }
+}
+
+function addModeOptions(number) {
+    if (number >= 1 && number <= 7) {
+        var mSelect = document.getElementById("modeSelect" + number);
+        for (i = 0; i < splatModes1.length; i++) {
+            var opt = document.createElement("option");
+            opt.value = splatModes1[i];
+            opt.text = splatModes1[i];
+            mSelect.add(opt);
+        }
+    }
+}
+
+function loopModeOptions() {
+    /*for (i=1; i <= 7; i++) {
+        addModeOptions(i);
+    }*/
+    //I'M JUST AS FRUSTRATED AS YOU ARE
+    //THE LOOP DOESN'T WORK
+    addModeOptions(1);
+    addModeOptions(2);
+    addModeOptions(3);
+    addModeOptions(4);
+    addModeOptions(5);
+    addModeOptions(6);
+    addModeOptions(7);
+}
+loopModeOptions();
+
+function loopMapOptions() {
+    //sorry
+    addMapOptions(1);
+    addMapOptions(2);
+    addMapOptions(3);
+    addMapOptions(4);
+    addMapOptions(5);
+    addMapOptions(6);
+    addMapOptions(7);
+}
+loopMapOptions();

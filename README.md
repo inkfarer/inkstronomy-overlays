@@ -4,7 +4,7 @@ A [NodeCG](http://github.com/nodecg/nodecg) bundle made for Inkstronomy tourname
 
 ## Screenshots
 
-* [Dashboard](https://i.imgur.com/hVNM4Ue.png)
+* [Dashboard](https://i.imgur.com/ODbymgQ.png)
 * [Break screen/Map select (7 maps)](https://i.imgur.com/ULqjiY5.jpg)
 * [Main scene](https://i.imgur.com/VxOD0aK.png)
 
