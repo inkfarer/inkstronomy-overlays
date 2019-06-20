@@ -61,27 +61,40 @@ teamBname.on('change', (newValue, oldValue) => {
     teamBnameDisplay.text = newValue;
 });
 
-function addSocialTL(number) {
+function addSocialTL(number, seconds) {
     socialTL.add(TweenMax.to("#socialNotifText", 0.3, {opacity: 0, onComplete: function() {
         socialNotifText.innerText = socialHandles.value[number];
     }}));
     socialTL.add(TweenMax.to("#socialNotifText", 0.3, {opacity: 1}));
-    socialTL.add(TweenMax.to({}, 1, {}));
+    socialTL.add(TweenMax.to({}, seconds, {}));
 }
 
 nodecg.listenFor('showSocialsAnim', message => {
     socialNotifText.innerText = socialHandles.value[0];
     socialTL.add(TweenMax.to("#socialNotifLine", 0.5, {ease: Power2.easeInOut,height: 100, top: 0}));
     socialTL.add(TweenMax.to("#socialNotifDiv", 0.75, {ease: Power2.easeOut,left: 5}));
-    socialTL.add(TweenMax.to({}, 1, {}));
+    socialTL.add(TweenMax.to({}, getSeconds(), {}));
     for(i=1;i<socialHandles.value.length;i++) {
         if (socialHandles.value[i] != "") {
-            addSocialTL(i);
+            addSocialTL(i, getSeconds());
         }
     }
     socialTL.add(TweenMax.to("#socialNotifDiv", 0.75, {ease: Power2.easeIn,left: -400}));
     socialTL.add(TweenMax.to("#socialNotifLine", 0.5, {ease: Power2.easeInOut,height: 0, top: 50}));
 });
+
+function getSeconds() {
+    var length = socialHandles.value.length;
+    if (length == 1) {
+        return 3;
+    } else if (length <= 3) {
+        return 1.5;
+    } else if (length <= 6) {
+        return 1;
+    } else {
+        return 0.8;
+    }
+}
 
 var colorNameToHex = {
     "Light Blue":"#0199B8",
