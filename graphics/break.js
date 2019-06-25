@@ -90,7 +90,6 @@ function updateFinalScores() {
 }
 
 function hideWinner(element1, element2) {
-    console.log(element1.style);
     if (element1.style.top == "" && element2.style.top == "" || element1.style.top == "120px" && element2.style.top == "0px") {
         TweenMax.to([element2], 1, {ease: Power2.easeInOut, top: -155});
         TweenMax.to([element1], 1, {ease: Power2.easeInOut, top: -35});
@@ -369,11 +368,10 @@ function hideContainers() {
 
 function songTextAnim(newText) {
     var songTimeline = new TimelineMax();
-    songTimeline.add(TweenMax.to("#song", 0.5, {bottom: -50, ease: Power2.easeIn, onComplete: function() {
+    songTimeline.add(TweenMax.to("#song", 0.5, {opacity: 0, ease: Power2.easeIn, onComplete: function() {
         song.text = newText;
-        song.style.bottom = "50px";
     }}))
-    .add(TweenMax.to("#song", 0.5, {bottom: -2}));
+    .add(TweenMax.to("#song", 0.5, {opacity: 1}));
 } 
 
 function updateSongText() {
