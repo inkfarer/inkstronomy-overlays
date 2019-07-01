@@ -127,59 +127,42 @@ function updateModes() {
     }
 }
 
-mapHidden.on('change', (newValue) => {
-    if (mapCount.value == 3) {
+mapHidden.on('change', (newValue, oldValue) => {
+    /*if (mapCount.value == 3) {
         animate3Maps(newValue);
-        animBG(newValue);
     } else if (mapCount.value == 5) {
         animate5Maps(newValue);
-        animBG(newValue);
     } else {
         animate7Maps(newValue);
-        animBG(newValue);
-    }
-    if (newValue == false) {
+    }*/
+    animHideShowMaps(newValue, oldValue);
+    if (oldValue == undefined) {
         pageLoadFunction();
     }
 });
 
 function pageLoadFunction() {
-    if (mapHidden.value == false) {
-        var opacity = 1;
-    } else {
-        var opacity = 0;
-    }
     if (mapCount.value == 5) {
-        transition7to5(opacity);
+        transition7to5();
     }
     else if (mapCount.value == 3) {
-        transition7to3(opacity);
+        transition7to3();
     }
 }
 
 mapCount.on('change', (newValue, oldValue) => {
-    if (mapHidden.value == false) {
-        var opacity = 1;
-    } else {
-        var opacity = 0;
-    }
     if (newValue == 5 && oldValue == 7) {
-        transition7to5(opacity);
-    }
-    else if (newValue == 7 && oldValue == 5) {
-        transition5to7(opacity);
-    }
-    else if (newValue == 7 && oldValue == 3) {
-        transition3to7(opacity);
-    }
-    else if (newValue == 3 && oldValue == 7) {
-        transition7to3(opacity);
-    }
-    else if (newValue == 5 && oldValue == 3) {
-        transition3to5(opacity);
-    }
-    else if (newValue == 3 && oldValue == 5) {
-        transition5to3(opacity);
+        transition7to5();
+    } else if (newValue == 7 && oldValue == 5) {
+        transition5to7();
+    } else if (newValue == 7 && oldValue == 3) {
+        transition3to7();
+    } else if (newValue == 3 && oldValue == 7) {
+        transition7to3();
+    } else if (newValue == 5 && oldValue == 3) {
+        transition3to5();
+    } else if (newValue == 3 && oldValue == 5) {
+        transition5to3();
     }
 });
 
@@ -192,27 +175,19 @@ function transition5to3() {
     MapsTL.add(TweenMax.to("#mapLeft1Container", 0.7, {ease: Power2.easeInOut, left: 295, delay: -0.4}))
     MapsTL.add(TweenMax.to("#mapMiddleContainer", 0.7, {ease: Power2.easeInOut, left: 755, delay: -0.7}))
     MapsTL.add(TweenMax.to("#mapRight1Container", 0.7, {ease: Power2.easeInOut, right: 295, delay: -0.7}))
-    MapsTL.add(TweenMax.to([".mapContainer", ".modeDisplay", ".mapNameDisplay", ".mapScoreDisplay", ".mapWinnerDisplay"], 0.7, {width: 400, ease: Power2.easeInOut, delay: -0.7}))
-    MapsTL.add(TweenMax.to(".modeText", 0.7, {attr:{"max-width":390}, width: 400, ease: Power2.easeInOut, delay: -0.7}))
-    MapsTL.add(TweenMax.to(".mapNameText", 0.7, {width: 390, fontSize: "2.9em" , ease: Power2.easeInOut, delay: -0.7}))
-    MapsTL.add(TweenMax.to(".mapWinnerText", 0.7, {width: 390, fontSize: "1.9em" , ease: Power2.easeInOut, delay: -0.7}))
-    MapsTL.add(TweenMax.to(".mapImage", 0.7, {right: -340, ease: Power2.easeInOut, delay: -0.7}));
+    animSetWidths(400, -340);
 }
 
-function transition3to5(opacity) {
+function transition3to5() {
     MapsTL.add(TweenMax.to("#mapLeft1Container", 0.7, {ease: Power2.easeInOut, left: 465, onStart: function() {
         mapLeft2Container.style.left = "100px";
         mapRight2Container.style.right = "100px";
     }}))
     MapsTL.add(TweenMax.to("#mapMiddleContainer", 0.7, {ease: Power2.easeInOut, left: 805, delay: -0.7}))
     MapsTL.add(TweenMax.to("#mapRight1Container", 0.7, {ease: Power2.easeInOut, right: 465, delay: -0.7}))
-    MapsTL.add(TweenMax.to([".mapContainer", ".modeDisplay", ".mapNameDisplay", ".mapScoreDisplay", ".mapWinnerDisplay"], 0.7, {width: 300, ease: Power2.easeInOut, delay: -0.7}))
-    MapsTL.add(TweenMax.to(".modeText", 0.7, {attr:{"max-width":290}, width: 300, ease: Power2.easeInOut, delay: -0.7}))
-    MapsTL.add(TweenMax.to(".mapNameText", 0.7, {width: 290, fontSize: "2.4em" , ease: Power2.easeInOut, delay: -0.7}))
-    MapsTL.add(TweenMax.to(".mapWinnerText", 0.7, {width: 290, fontSize: "1.9em" , ease: Power2.easeInOut, delay: -0.7}))
-    MapsTL.add(TweenMax.to(".mapImage", 0.7, {right: -385, ease: Power2.easeInOut, delay: -0.7}))
-    MapsTL.add(TweenMax.to("#mapLeft2Container", 0.7, {left: 125, opacity: opacity, delay: -0.15}))
-    MapsTL.add(TweenMax.to("#mapRight2Container", 0.7, {right: 125, delay: -0.7, opacity: opacity}));
+    animSetWidths(300, -385);
+    MapsTL.add(TweenMax.to("#mapLeft2Container", 0.7, {left: 125, opacity: 1, delay: -0.15}))
+    MapsTL.add(TweenMax.to("#mapRight2Container", 0.7, {right: 125, delay: -0.7, opacity: 1}));
 }
 
 function transition7to3() {
@@ -223,29 +198,21 @@ function transition7to3() {
     MapsTL.add(TweenMax.to("#mapLeft1Container", 0.7, {ease: Power2.easeInOut, left: 295, delay: -0.4}))
     MapsTL.add(TweenMax.to("#mapMiddleContainer", 0.7, {ease: Power2.easeInOut, left: 755, delay: -0.7}))
     MapsTL.add(TweenMax.to("#mapRight1Container", 0.7, {ease: Power2.easeInOut, right: 295, delay: -0.7}))
-    MapsTL.add(TweenMax.to([".mapContainer", ".modeDisplay", ".mapNameDisplay", ".mapScoreDisplay", ".mapWinnerDisplay"], 0.7, {width: 400, ease: Power2.easeInOut, delay: -0.7}))
-    MapsTL.add(TweenMax.to(".modeText", 0.7, {attr:{"max-width":390}, width: 400, ease: Power2.easeInOut, delay: -0.7}))
-    MapsTL.add(TweenMax.to(".mapNameText", 0.7, {width: 390, fontSize: "2.9em" , ease: Power2.easeInOut, delay: -0.7}))
-    MapsTL.add(TweenMax.to(".mapWinnerText", 0.7, {width: 390, fontSize: "1.9em" , ease: Power2.easeInOut, delay: -0.7}))
-    MapsTL.add(TweenMax.to(".mapImage", 0.7, {right: -340, ease: Power2.easeInOut, delay: -0.7}));
+    animSetWidths(400, -340);
 }
 
-function transition3to7(opacity) {
+function transition3to7() {
     MapsTL.add(TweenMax.to("#mapLeft1Container", 0.7, {ease: Power2.easeInOut,left: 605, onStart: function() {
         mapLeft2Container.style.left = "340px";
         mapRight2Container.style.right = "340px";
     }}))
     MapsTL.add(TweenMax.to("#mapMiddleContainer", 0.7, {ease: Power2.easeInOut,left: 845, delay: -0.7}))
     MapsTL.add(TweenMax.to("#mapRight1Container", 0.7, {ease: Power2.easeInOut,right: 605, delay: -0.7}))
-    MapsTL.add(TweenMax.to([".mapContainer", ".modeText", ".modeDisplay", ".mapNameDisplay", ".mapScoreDisplay", ".mapWinnerDisplay"], 0.7, {ease: Power2.easeInOut,width: 220, delay: -0.7}))
-    MapsTL.add(TweenMax.to(".mapNameText", 0.7, {width: 210, fontSize: "2em", ease: Power2.easeInOut, delay: -0.7}));
-    MapsTL.add(TweenMax.to(".mapWinnerText", 0.7, {width: 210, fontSize: "1.75em" , ease: Power2.easeInOut, delay: -0.7}))
-    MapsTL.add(TweenMax.to(".mapImage", 0.7, {right: -425, ease: Power2.easeInOut, delay: -0.7}));
-    MapsTL.add(TweenMax.to(".modeText", 0.7, {attr:{"max-width":210}, width: 220, ease: Power2.easeInOut, delay: -0.7}))
-    MapsTL.add(TweenMax.to("#mapLeft2Container", 0.7, {left: 365, opacity: opacity, delay: -0.15}))
-    MapsTL.add(TweenMax.to("#mapRight2Container", 0.7, {right: 365, opacity: opacity, delay: -0.7}))
-    MapsTL.add(TweenMax.to("#mapLeft3Container", 0.7, {left: 125, opacity: opacity, delay: -0.7}))
-    MapsTL.add(TweenMax.to("#mapRight3Container", 0.7, {right: 125, opacity: opacity, delay: -0.7}));
+    animSetWidths(220, -425);
+    MapsTL.add(TweenMax.to("#mapLeft2Container", 0.7, {left: 365, opacity: 1, delay: -0.15}))
+    MapsTL.add(TweenMax.to("#mapRight2Container", 0.7, {right: 365, opacity: 1, delay: -0.7}))
+    MapsTL.add(TweenMax.to("#mapLeft3Container", 0.7, {left: 125, opacity: 1, delay: -0.7}))
+    MapsTL.add(TweenMax.to("#mapRight3Container", 0.7, {right: 125, opacity: 1, delay: -0.7}));
 }
 
 function transition7to5() {
@@ -256,114 +223,110 @@ function transition7to5() {
     MapsTL.add(TweenMax.to("#mapMiddleContainer", 0.7, {ease: Power2.easeInOut,left: 805, delay: -0.7}))
     MapsTL.add(TweenMax.to("#mapRight1Container", 0.7, {ease: Power2.easeInOut, right: 465, delay: -0.7}))
     MapsTL.add(TweenMax.to("#mapRight2Container", 0.7, {ease: Power2.easeInOut, right: 125, delay: -0.7}))
-    MapsTL.add(TweenMax.to([".mapContainer", ".modeDisplay", ".mapNameDisplay", ".mapScoreDisplay", ".mapWinnerDisplay"], 0.7, {width: 300, ease: Power2.easeInOut, delay: -0.7}))
-    MapsTL.add(TweenMax.to(".modeText", 0.7, {attr:{"max-width":290}, width: 300, ease: Power2.easeInOut, delay: -0.7}))
-    MapsTL.add(TweenMax.to(".mapNameText", 0.7, {width: 290, fontSize: "2.4em" , ease: Power2.easeInOut, delay: -0.7}))
-    MapsTL.add(TweenMax.to(".mapWinnerText", 0.7, {width: 290, fontSize: "1.9em" , ease: Power2.easeInOut, delay: -0.7}))
-    MapsTL.add(TweenMax.to(".mapImage", 0.7, {right: -385, ease: Power2.easeInOut, delay: -0.7}));
+    animSetWidths(300, -385);
     
 }
 
-function transition5to7(opacity) {
+function transition5to7() {
     MapsTL.add(TweenMax.to("#mapLeft2Container", 0.7, {ease: Power2.easeInOut,left: 365}))
     MapsTL.add(TweenMax.to("#mapLeft1Container", 0.7, {ease: Power2.easeInOut,left: 605, delay: -0.7}))
     MapsTL.add(TweenMax.to("#mapMiddleContainer", 0.7, {ease: Power2.easeInOut,left: 845, delay: -0.7}))
     MapsTL.add(TweenMax.to("#mapRight1Container", 0.7, {ease: Power2.easeInOut,right: 605, delay: -0.7}))
     MapsTL.add(TweenMax.to("#mapRight2Container", 0.7, {ease: Power2.easeInOut,right: 365, delay: -0.7}))
-    MapsTL.add(TweenMax.to([".mapContainer", ".modeText", ".modeDisplay", ".mapNameDisplay", ".mapScoreDisplay", ".mapWinnerDisplay"], 0.7, {ease: Power2.easeInOut,width: 220, delay: -0.7}))
-    MapsTL.add(TweenMax.to(".mapNameText", 0.7, {width: 210, fontSize: "2em", ease: Power2.easeInOut, delay: -0.7}));
-    MapsTL.add(TweenMax.to(".mapWinnerText", 0.7, {width: 210, fontSize: "1.75em" , ease: Power2.easeInOut, delay: -0.7}))
-    MapsTL.add(TweenMax.to(".mapImage", 0.7, {right: -425, ease: Power2.easeInOut, delay: -0.7}));
-    MapsTL.add(TweenMax.to(".modeText", 0.7, {attr:{"max-width":210}, width: 220, ease: Power2.easeInOut, delay: -0.7}))
-    MapsTL.add(TweenMax.to("#mapLeft3Container", 0.7, {left: 125, opacity: opacity, delay: -0.15}))
-    MapsTL.add(TweenMax.to("#mapRight3Container", 0.7, {right: 125, opacity: opacity, delay: -0.7}));
+    animSetWidths(220, -425);
+    MapsTL.add(TweenMax.to("#mapLeft3Container", 0.7, {left: 125, opacity: 1, delay: -0.15}))
+    MapsTL.add(TweenMax.to("#mapRight3Container", 0.7, {right: 125, opacity: 1, delay: -0.7}));
 }
 
-function animate3Maps(bool) {
-    var animSpeed = 1;
-    var animDelay = -0.8;
-    if (bool) {
-        MapsTL.add(TweenMax.to("#mapLeft1Container", animSpeed, {ease: Power2.easeIn, top: -500, opacity: 0}))
-        MapsTL.add(TweenMax.to("#mapMiddleContainer", animSpeed, {ease: Power2.easeIn, top: -500, opacity: 0, delay: animDelay}))
-        MapsTL.add(TweenMax.to("#mapRight1Container", animSpeed, {ease: Power2.easeIn, top: -500, opacity: 0, delay: animDelay}))
-        MapsTL.add(TweenMax.to("#mapLeft3Container", 0, {ease: Power2.easeIn, top: -500, opacity: 0}))
-        MapsTL.add(TweenMax.to("#mapRight3Container", 0, {ease: Power2.easeIn, top: -500, opacity: 0}))
-        MapsTL.add(TweenMax.to("#mapLeft2Container", 0, {ease: Power2.easeIn, top: -500, opacity: 0}))
-        MapsTL.add(TweenMax.to("#mapRight2Container", 0, {ease: Power2.easeIn, top: -500, opacity: 0}));
+function animSetWidths(width, imageRight) {
+    var width2 = width - 10;
+    MapsTL.add(TweenMax.to([".mapContainer", ".modeText", ".modeDisplay", ".mapNameDisplay", ".mapScoreDisplay", ".mapWinnerDisplay"], 0.7, {ease: Power2.easeInOut,width: width, delay: -0.7}))
+    MapsTL.add(TweenMax.to(".mapNameText", 0.7, {width: width2, fontSize: "2em", ease: Power2.easeInOut, delay: -0.7}));
+    MapsTL.add(TweenMax.to(".mapWinnerText", 0.7, {width: width2, fontSize: "1.75em" , ease: Power2.easeInOut, delay: -0.7}))
+    MapsTL.add(TweenMax.to(".mapImage", 0.7, {right: imageRight, ease: Power2.easeInOut, delay: -0.7}));
+    MapsTL.add(TweenMax.to(".modeText", 0.7, {attr:{"max-width":width2}, width: width, ease: Power2.easeInOut, delay: -0.7}))
+}
+
+//THE animation that plays when you hide or show maps
+function animHideShowMaps(bool, bool2) {
+    var elements3 = ["mapLeft3Container", "mapRight3Container", "mapLeft2Container", "mapRight2Container"];
+    var elements5 = ["mapLeft3Container", "mapRight3Container"];
+    var animSpeed, animDelay1, animDelay2, animDelay3, styleTop, styleOpac, animEase;
+    if (mapCount.value == 3) {
+        //set animation parameters if there are three maps shown
+        animSpeed = 1;
+        animDelay1 = 0;
+        animDelay2 = 0;
+        animDelay3 = -0.8;
+        //hide elements that should not be shown... just in case
+        for (i = 0; i < elements3.length; i++) {
+            document.getElementById(elements3[i]).style.opacity = "0";
+        }
+    } else if (mapCount.value == 5) {
+        //animation params if there are five maps
+        animSpeed = 0.9;
+        animDelay1 = 0;
+        animDelay2 = -0.75;
+        animDelay3 = -0.75;
+        for (i = 0; i < elements5.length; i++) {
+            document.getElementById(elements5[i]).style.opacity = "0";
+        }
     } else {
-        animBG(false);
-        MapsTL.add(TweenMax.to("#mapLeft1Container", animSpeed, {top: 53, opacity: 1, delay: -0.2}))
-        MapsTL.add(TweenMax.to("#mapMiddleContainer", animSpeed, {top: 53, opacity: 1, delay: animDelay}))
-        MapsTL.add(TweenMax.to("#mapRight1Container", animSpeed, {top: 53, opacity: 1, delay: animDelay}))
-        MapsTL.add(TweenMax.to("#mapLeft3Container", 0, {ease: Power2.easeIn, top: 53}))
-        MapsTL.add(TweenMax.to("#mapRight3Container", 0, {ease: Power2.easeIn, top: 53}))
-        MapsTL.add(TweenMax.to("#mapLeft2Container", 0, {ease: Power2.easeIn, top: 53}))
-        MapsTL.add(TweenMax.to("#mapRight2Container", 0, {ease: Power2.easeIn, top: 53}));
-        hideContainers();
+        //params if 7 maps
+        animSpeed = 0.8;
+        animDelay1 = -0.7;
+        animDelay2 = -0.7;
+        animDelay3 = -0.7;
     }
-}
-
-function animate5Maps(bool) {
-    var animSpeed = 0.9;
-    var animDelay = -0.75;
     if (bool) {
-        MapsTL.add(TweenMax.to("#mapLeft2Container", animSpeed, {ease: Power2.easeIn, top: -500, opacity: 0}))
-        MapsTL.add(TweenMax.to("#mapLeft1Container", animSpeed, {ease: Power2.easeIn, top: -500, opacity: 0, delay: animDelay}))
-        MapsTL.add(TweenMax.to("#mapMiddleContainer", animSpeed, {ease: Power2.easeIn, top: -500, opacity: 0, delay: animDelay}))
-        MapsTL.add(TweenMax.to("#mapRight1Container", animSpeed, {ease: Power2.easeIn, top: -500, opacity: 0, delay: animDelay}))
-        MapsTL.add(TweenMax.to("#mapRight2Container", animSpeed, {ease: Power2.easeIn, top: -500, opacity: 0, delay: animDelay}))
-        MapsTL.add(TweenMax.to("#mapLeft3Container", 0, {ease: Power2.easeIn, top: -500, opacity: 0}))
-        MapsTL.add(TweenMax.to("#mapRight3Container", 0, {ease: Power2.easeIn, top: -500, opacity: 0}));
+        //parameters if the animation is supposed to be hiding the maps
+        styleTop = -500;
+        styleOpac = 0;
+        animEase = "Power2.easeIn";
     } else {
-        animBG(false);
-        MapsTL.add(TweenMax.to("#mapLeft2Container", animSpeed, {top: 53, opacity: 1, delay: -0.2}))
-        MapsTL.add(TweenMax.to("#mapLeft1Container", animSpeed, {top: 53, opacity: 1, delay: animDelay}))
-        MapsTL.add(TweenMax.to("#mapMiddleContainer", animSpeed, {top: 53, opacity: 1, delay: animDelay}))
-        MapsTL.add(TweenMax.to("#mapRight1Container", animSpeed, {top: 53, opacity: 1, delay: animDelay}))
-        MapsTL.add(TweenMax.to("#mapRight2Container", animSpeed, {top: 53, opacity: 1, delay: animDelay}))
-        MapsTL.add(TweenMax.to("#mapLeft3Container", 0, {ease: Power2.easeIn, top: 53}))
-        MapsTL.add(TweenMax.to("#mapRight3Container", 0, {ease: Power2.easeIn, top: 53}));
-    }
-}
-
-function animate7Maps(bool) {
-    var animSpeed = 0.8;
-    var animDelay = -0.7;
-    if (bool) {
-        MapsTL.add(TweenMax.to("#mapLeft3Container", animSpeed, {ease: Power2.easeIn, top: -500, opacity: 0}))
-        MapsTL.add(TweenMax.to("#mapLeft2Container", animSpeed, {ease: Power2.easeIn, top: -500, opacity: 0, delay: animDelay}))
-        MapsTL.add(TweenMax.to("#mapLeft1Container", animSpeed, {ease: Power2.easeIn, top: -500, opacity: 0, delay: animDelay}))
-        MapsTL.add(TweenMax.to("#mapMiddleContainer", animSpeed, {ease: Power2.easeIn, top: -500, opacity: 0, delay: animDelay}))
-        MapsTL.add(TweenMax.to("#mapRight1Container", animSpeed, {ease: Power2.easeIn, top: -500, opacity: 0, delay: animDelay}))
-        MapsTL.add(TweenMax.to("#mapRight2Container", animSpeed, {ease: Power2.easeIn, top: -500, opacity: 0, delay: animDelay}))
-        MapsTL.add(TweenMax.to("#mapRight3Container", animSpeed, {ease: Power2.easeIn, top: -500, opacity: 0, delay: animDelay}));
-    } else {
-        animBG(false);
-        MapsTL.add(TweenMax.to("#mapLeft3Container", animSpeed, {top: 53, opacity: 1, delay: -0.2}))
-        MapsTL.add(TweenMax.to("#mapLeft2Container", animSpeed, {top: 53, opacity: 1, delay: animDelay}))
-        MapsTL.add(TweenMax.to("#mapLeft1Container", animSpeed, {top: 53, opacity: 1, delay: animDelay}))
-        MapsTL.add(TweenMax.to("#mapMiddleContainer", animSpeed, {top: 53, opacity: 1, delay: animDelay}))
-        MapsTL.add(TweenMax.to("#mapRight1Container", animSpeed, {top: 53, opacity: 1, delay: animDelay}))
-        MapsTL.add(TweenMax.to("#mapRight2Container", animSpeed, {top: 53, opacity: 1, delay: animDelay}))
-        MapsTL.add(TweenMax.to("#mapRight3Container", animSpeed, {top: 53, opacity: 1, delay: animDelay}));
-        
-    }
-}
-
-function animBG(bool) {
-    if (bool) {
-        MapsTL.add(TweenMax.to(["#backgroundIMG", "#stars"], 0.6, {ease: Power2.easeIn, top: -1080, delay: -0.05}))
-        MapsTL.add(TweenMax.to("#text1", 0.6, {ease: Power2.easeIn, top: -1025, delay: -0.6}))
-        MapsTL.add(TweenMax.to("#text1Line", 0.6, {ease: Power2.easeIn, top: -920, delay: -0.6}));
-    } else {
+        //if we're showing the maps
+        styleTop = 53;
+        styleOpac = 1;
+        animEase = "Power2.easeOut";
+        //check so this doesn't run on page load for some reason
+        if (bool2 !== undefined) {
+            //so no elements are in positions we don't expect them to be in
+            for (i = 0; i < elements3.length; i++) {
+                document.getElementById(elements3[i]).style.top = "-500px";
+                document.getElementById(elements3[i]).style.opacity = "0";
+            }
+        }
+        //make the background descend from the heavens
         MapsTL.add(TweenMax.to(["#backgroundIMG", "#stars"], 0.8, {ease: Power2.easeOut, top: 0}))
         MapsTL.add(TweenMax.to("#text1", 0.8, {ease: Power2.easeOut, top: 55, delay: -0.8}))
         MapsTL.add(TweenMax.to("#text1Line", 0.8, {ease: Power2.easeOut, top: 160, delay: -0.8}))
+        //make everything visible
+        containersDiv.style.opacity = "1";
+    } // here comes the actual animation!
+    if (mapCount.value == 7) { MapsTL.add(TweenMax.to("#mapLeft3Container", animSpeed, {ease: animEase, top: styleTop, opacity: styleOpac})); }
+    if (mapCount.value == 7 || mapCount.value == 5) { MapsTL.add(TweenMax.to("#mapLeft2Container", animSpeed, {ease: animEase, top: styleTop, opacity: styleOpac, delay: animDelay1})); }
+    MapsTL.add(TweenMax.to("#mapLeft1Container", animSpeed, {ease: animEase, top: styleTop, opacity: styleOpac, delay: animDelay2}))
+    MapsTL.add(TweenMax.to("#mapMiddleContainer", animSpeed, {ease: animEase, top: styleTop, opacity: styleOpac, delay: animDelay3}))
+    MapsTL.add(TweenMax.to("#mapRight1Container", animSpeed, {ease: animEase, top: styleTop, opacity: styleOpac, delay: animDelay3}));
+    if (mapCount.value == 7 || mapCount.value == 5) { MapsTL.add(TweenMax.to("#mapRight2Container", animSpeed, {ease: animEase, top: styleTop, opacity: styleOpac, delay: animDelay3})); }
+    if (mapCount.value == 7) { MapsTL.add(TweenMax.to("#mapRight3Container", animSpeed, {ease: animEase, top: styleTop, opacity: styleOpac, delay: animDelay3})); } // and the aftermath
+    if (bool) {
+        // if we're hiding, make the background go up
+        MapsTL.add(TweenMax.to(["#backgroundIMG", "#stars"], 0.6, {ease: Power2.easeIn, top: -1080, delay: -0.05}))
+        MapsTL.add(TweenMax.to("#text1", 0.6, {ease: Power2.easeIn, top: -1025, delay: -0.6}))
+        MapsTL.add(TweenMax.to("#text1Line", 0.6, {ease: Power2.easeIn, top: -920, delay: -0.6}));
+        // after the animation is done (why the blank tween is here) change opacities so nothing unexpectedly gets shown
+        MapsTL.add(TweenMax.to({}, 0.1, {delay: -0.1, onComplete: function() {
+            containersDiv.style.opacity = "0";
+        }}));
+    } else {
+        MapsTL.add(TweenMax.to({}, 0.1, {delay: -0.1, onComplete: function() {
+            // change positions so no elements are where we don't expect them to be, just in case
+            for (i = 0; i < elements3.length; i++) {
+                document.getElementById(elements3[i]).style.top = "53px";
+            }
+        }}));
     }
-}
-
-function hideContainers() {
-    
 }
 
 function songTextAnim(newText) {
