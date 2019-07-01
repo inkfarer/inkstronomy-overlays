@@ -5,6 +5,38 @@ const finalScores = nodecg.Replicant('finalScores', {defaultValue: ["", "", "", 
 const selectedMaps = nodecg.Replicant('selectedMaps', {defaultValue: ["", "", "", "", "", "", ""]});
 const selectedModes = nodecg.Replicant('selectedModes', {defaultValue: ["", "", "", "", "", "", ""]});
 const mapHidden = nodecg.Replicant('mapHidden');
+//if "disable not shown" is enabled or not
+const notShownDisabledRep = nodecg.Replicant('notShownDisabledRep');
+
+notShownDisabledRep.on('change', (newValue, OldValue) => {
+    updateHiders();
+});
+
+function updateHiders() {
+    if (notShownDisabledRep.value) {
+        if (mapCount.value == 5) {
+            hider1.style.visibility = "visible";
+            hider2.style.visibility = "hidden";
+            hider6.style.visibility = "hidden";
+            hider7.style.visibility = "visible";
+        } else if (mapCount.value == 3) {
+            hider1.style.visibility = "visible";
+            hider2.style.visibility = "visible";
+            hider6.style.visibility = "visible";
+            hider7.style.visibility = "visible";
+        } else if (mapCount.value == 7) {
+            hider1.style.visibility = "hidden";
+            hider2.style.visibility = "hidden";
+            hider6.style.visibility = "hidden";
+            hider7.style.visibility = "hidden";
+        }
+    } else {
+        hider1.style.visibility = "hidden";
+        hider2.style.visibility = "hidden";
+        hider6.style.visibility = "hidden";
+        hider7.style.visibility = "hidden";
+    }
+}
 
 mapShow.onclick = () => {
     mapHidden.value = false;
@@ -177,6 +209,7 @@ function updateMapSelectText() {
 mapCount.on('change', (newValue, OldValue) => {
     disableButtons();
     updateMapSelectText();
+    updateHiders();
 });
 
 var splatMaps1 = ["We don't know.",

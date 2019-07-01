@@ -23,6 +23,7 @@
 				min-width: 77px;
 				max-width: 77px;
 				background-color: #645CA1;
+				float: left;
 			}
             paper-button[disabled] {
 				color: #A9AAA9;
@@ -61,12 +62,17 @@
 			}
 			#updateMapsModesButton {
 				background-color: #645CA1;
+				float: left;
+				margin-left: 10px;
 			}
 			#resetWinsButton {
 				background-color: #C9513E;
+				float: left;
+				margin-left: 10px;
+				margin-right: 10px;
 			}
 			#mapShow {
-				margin-left: 35%;
+				margin-left: 1%;
 			}
 			select {
 				width: 147px;
@@ -95,21 +101,39 @@
 				font-family: 'Roboto', 'Noto', sans-serif;
 				margin-top: 7px;
 			}
+			nodecg-toggle {
+				--paper-toggle-button-label-color: white;
+				--paper-toggle-button-checked-bar-color:  #645CA1;
+   			    --paper-toggle-button-checked-button-color:  #645CA1;
+				--paper-toggle-button-checked-ink-color: #645CA1;
+				width: 160px;
+				float: left;
+			}
+			.mapSelectHider {
+				background-color: rgba(0, 0, 0, 0.75);
+				width: 153px;
+				height: 265px;
+				position: absolute;
+				top: 65px;
+				z-index: 99;
+			}
         </style>
     </custom-style>
 </head>
 <body style="background-color: #2F3A4F">
-    <div class="layout center" id="mapCountButtons">
+    <div class="layout center" id="mapButtons">
 		<paper-button raised id="show3Maps" class="threeInARow">3 Maps</paper-button>
 		<paper-button raised id="show5Maps" class="threeInARow">5 Maps</paper-button>
 		<paper-button raised id="show7Maps" class="threeInARow">7 Maps</paper-button>
 		<paper-button raised id="updateMapsModesButton" onclick="updateMapsModesRep()">Update maps and modes</paper-button>
 		<paper-button raised id="resetWinsButton" onclick="resetWins()">reset wins</paper-button>
-		<paper-button raised style="background-color: #5BA664;" id="mapShow">Show</paper-button>
+		<nodecg-toggle replicant-name="notShownDisabledRep" noink style="margin:0">Disable Not Shown</nodecg-toggle>
+		<paper-button raised style="background-color: #5BA664; margin-left: 20%;" id="mapShow">Show</paper-button>
 		<paper-button raised style="background-color: #C9513E;" id="mapHide">Hide</paper-button>
 	</div>
 	<div class="layout horizontal">
 		<div class="layout vertical mapSelectorThing">
+				<div class="mapSelectHider" id="hider1" style="left: 17px;"></div>
 			<div class="mapSelectNumbering" id="mapSelectNumber1">1</div>
 			<paper-input class="matchScore" id="matchScoreInput1" label="Final Score" onchange="setFinalScore(1)"></paper-input>
 			<div class="layout horizontal">
@@ -123,6 +147,7 @@
 			<select id="modeSelect1"></select>
 		</div>
 		<div class="layout vertical mapSelectorThing">
+			<div class="mapSelectHider" id="hider2" style="left: 175px;"></div>
 			<div class="mapSelectNumbering" id="mapSelectNumber2">2</div>
 			<paper-input class="matchScore" id="matchScoreInput2" label="Final Score" onchange="setFinalScore(2)"></paper-input>
 			<div class="layout horizontal">
@@ -175,6 +200,7 @@
 			<select id="modeSelect5"></select>
 		</div>
 		<div class="layout vertical mapSelectorThing">
+			<div class="mapSelectHider" id="hider6" style="right: 175px;"></div>
 			<div class="mapSelectNumbering" id="mapSelectNumber6">6</div>
 			<paper-input class="matchScore" id="matchScoreInput6" label="Final Score" onchange="setFinalScore(6)"></paper-input>
 			<div class="layout horizontal">
@@ -188,6 +214,7 @@
 			<select id="modeSelect6"></select>
 		</div>
 		<div class="layout vertical mapSelectorThing">
+			<div class="mapSelectHider" id="hider7" style="right: 17px;"></div>
 			<div class="mapSelectNumbering" id="mapSelectNumber7">7</div>
 			<paper-input class="matchScore" id="matchScoreInput7" label="Final Score" onchange="setFinalScore(7)"></paper-input>
 			<div class="layout horizontal">
@@ -203,3 +230,4 @@
 	</div>
     <script type="text/javascript" src="maps.js"></script>
 </body>
+</html>
