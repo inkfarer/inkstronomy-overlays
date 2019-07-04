@@ -231,7 +231,7 @@ function transitionXtoY(newValue, oldValue) {
         moveContainers1Mid(styleLR1, styleLRMid, "Power2.easeInOut", delay, delay2);
         animSetWidths(animWidth, animWidthPic);
         if (oldValue == 3) { moveContainers2(1, styleLR2, "Power2.easeInOut", delayShow, delay); }
-        if (newValue == 7) { moveContainers3(1, 125, "Power2.easeInOut", delay, delay); }
+        if (newValue == 7) { moveContainers3(1, 125, "Power2.easeInOut", delay3, delay); }
 
         /*if (newValue == 7 && oldValue == 3) {
             moveContainers1Mid(605, 845, "Power2.easeInOut", delay, 0);
