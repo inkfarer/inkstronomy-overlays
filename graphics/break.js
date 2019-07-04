@@ -203,21 +203,6 @@ function transitionXtoY(newValue, oldValue) {
         
     }
     if (oldValue > newValue) {
-        /*if (newValue == 3 && oldValue == 7) {
-            moveContainers3(0, 100, "Power2.easeInOut", 0, delay);
-            moveContainers2(0, 340, "Power2.easeInOut", delay, delay);
-            moveContainers1Mid(295, 755, "Power2.easeInOut", delay, -0.4);
-            animSetWidths(400, -340);
-        } else if (newValue == 5 && oldValue == 7) {
-            moveContainers3(0, 100, "Power2.easeInOut", 0, delay);
-            moveContainers2(1, 125, "Power2.easeInOut", -0.4, delay);
-            moveContainers1Mid(465, 805, "Power2.easeInOut", delay, delay);
-            animSetWidths(300, -385);
-        } else if (newValue == 3 && oldValue == 5) {
-            moveContainers2(0, 100, "Power2.easeInOut", 0, delay);
-            moveContainers1Mid(295, 755, "Power2.easeInOut", delay, -0.4);
-            animSetWidths(400, -340);
-        }*/
         if (oldValue == 7) { moveContainers3(0, 100, "Power2.easeInOut", 0, delay); }
         moveContainers2(styleOpac2, styleLR2, "Power2.easeInOut", delay3, delay);
         moveContainers1Mid(styleLR1, styleLRMid, "Power2.easeInOut", delay, delay2);
@@ -232,22 +217,6 @@ function transitionXtoY(newValue, oldValue) {
         animSetWidths(animWidth, animWidthPic);
         if (oldValue == 3) { moveContainers2(1, styleLR2, "Power2.easeInOut", delayShow, delay); }
         if (newValue == 7) { moveContainers3(1, 125, "Power2.easeInOut", delay3, delay); }
-
-        /*if (newValue == 7 && oldValue == 3) {
-            moveContainers1Mid(605, 845, "Power2.easeInOut", delay, 0);
-            animSetWidths(220, -425);
-            moveContainers2(1, 365, "Power2.easeInOut", -0.15, delay);
-            moveContainers3(1, 125, "Power2.easeInOut", delay, delay);
-        } else if (newValue == 7 && oldValue == 5) {
-            moveContainers2(1, 365, "Power2.easeInOut", 0, delay);
-            moveContainers1Mid(605, 845, "Power2.easeInOut", delay, delay);
-            animSetWidths(220, -425);
-            moveContainers3(1, 125, "Power2.easeInOut", -0.15, delay);
-        } else if (newValue == 5 && oldValue == 3) {
-            moveContainers1Mid(465, 805, "Power2.easeInOut", delay, 0);
-            animSetWidths(300, -385);
-            moveContainers2(1, 125, "Power2.easeInOut", -0.15, delay);
-        }*/
     }
 }
 
