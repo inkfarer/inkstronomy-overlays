@@ -144,19 +144,6 @@ function pageLoadFunction() {
 }
 
 mapCount.on('change', (newValue, oldValue) => {
-    /*if (newValue == 5 && oldValue == 7) {
-        transition7to5();
-    } else if (newValue == 7 && oldValue == 5) {
-        transition5to7();
-    } else if (newValue == 7 && oldValue == 3) {
-        transition3to7();
-    } else if (newValue == 3 && oldValue == 7) {
-        transition7to3();
-    } else if (newValue == 5 && oldValue == 3) {
-        transition3to5();
-    } else if (newValue == 3 && oldValue == 5) {
-        transition5to3();
-    }*/
     transitionXtoY(newValue, oldValue);
 });
 
@@ -231,75 +218,6 @@ function moveContainers1Mid(leftRight, positionMid, ease, delay, delay2) {
     MapsTL.add(TweenMax.to("#mapLeft1Container", 0.7, {ease: ease, left: leftRight, delay: delay2}))
     MapsTL.add(TweenMax.to("#mapMiddleContainer", 0.7, {ease: ease, left: positionMid, delay: delay}))
     MapsTL.add(TweenMax.to("#mapRight1Container", 0.7, {ease: ease, right: leftRight, delay: delay}));
-}
-
-function transition5to3() {
-    MapsTL.add(TweenMax.to("#mapLeft2Container", 0.7, {ease: Power2.easeInOut, opacity: 0, left: 100}))
-    MapsTL.add(TweenMax.to("#mapRight2Container", 0.7, {ease: Power2.easeInOut, opacity: 0, right: 100, delay: -0.7}))
-    MapsTL.add(TweenMax.to("#mapLeft1Container", 0.7, {ease: Power2.easeInOut, left: 295, delay: -0.4}))
-    MapsTL.add(TweenMax.to("#mapMiddleContainer", 0.7, {ease: Power2.easeInOut, left: 755, delay: -0.7}))
-    MapsTL.add(TweenMax.to("#mapRight1Container", 0.7, {ease: Power2.easeInOut, right: 295, delay: -0.7}))
-    animSetWidths(400, -340);
-}
-
-function transition3to5() {
-    MapsTL.add(TweenMax.to("#mapLeft1Container", 0.7, {ease: Power2.easeInOut, left: 465, onStart: function() {
-        mapLeft2Container.style.left = "100px";
-        mapRight2Container.style.right = "100px";
-    }}))
-    MapsTL.add(TweenMax.to("#mapMiddleContainer", 0.7, {ease: Power2.easeInOut, left: 805, delay: -0.7}))
-    MapsTL.add(TweenMax.to("#mapRight1Container", 0.7, {ease: Power2.easeInOut, right: 465, delay: -0.7}))
-    animSetWidths(300, -385);
-    MapsTL.add(TweenMax.to("#mapLeft2Container", 0.7, {left: 125, opacity: 1, delay: -0.15}))
-    MapsTL.add(TweenMax.to("#mapRight2Container", 0.7, {right: 125, delay: -0.7, opacity: 1}));
-}
-
-function transition7to3() {
-    MapsTL.add(TweenMax.to("#mapLeft3Container", 0.7, {ease: Power2.easeInOut, left: 100, opacity: 0}))
-    MapsTL.add(TweenMax.to("#mapRight3Container", 0.7, {ease: Power2.easeInOut, right: 100, opacity: 0, delay: -0.7}))
-    MapsTL.add(TweenMax.to("#mapLeft2Container", 0.7, {ease: Power2.easeInOut, opacity: 0, left: 340, delay: -0.7}))
-    MapsTL.add(TweenMax.to("#mapRight2Container", 0.7, {ease: Power2.easeInOut, opacity: 0, right: 340, delay: -0.7}))
-    MapsTL.add(TweenMax.to("#mapLeft1Container", 0.7, {ease: Power2.easeInOut, left: 295, delay: -0.4}))
-    MapsTL.add(TweenMax.to("#mapMiddleContainer", 0.7, {ease: Power2.easeInOut, left: 755, delay: -0.7}))
-    MapsTL.add(TweenMax.to("#mapRight1Container", 0.7, {ease: Power2.easeInOut, right: 295, delay: -0.7}))
-    animSetWidths(400, -340);
-}
-
-function transition3to7() {
-    MapsTL.add(TweenMax.to("#mapLeft1Container", 0.7, {ease: Power2.easeInOut,left: 605, onStart: function() {
-        mapLeft2Container.style.left = "340px";
-        mapRight2Container.style.right = "340px";
-    }}))
-    MapsTL.add(TweenMax.to("#mapMiddleContainer", 0.7, {ease: Power2.easeInOut,left: 845, delay: -0.7}))
-    MapsTL.add(TweenMax.to("#mapRight1Container", 0.7, {ease: Power2.easeInOut,right: 605, delay: -0.7}))
-    animSetWidths(220, -425);
-    MapsTL.add(TweenMax.to("#mapLeft2Container", 0.7, {left: 365, opacity: 1, delay: -0.15}))
-    MapsTL.add(TweenMax.to("#mapRight2Container", 0.7, {right: 365, opacity: 1, delay: -0.7}))
-    MapsTL.add(TweenMax.to("#mapLeft3Container", 0.7, {left: 125, opacity: 1, delay: -0.7}))
-    MapsTL.add(TweenMax.to("#mapRight3Container", 0.7, {right: 125, opacity: 1, delay: -0.7}));
-}
-
-function transition7to5() {
-    MapsTL.add(TweenMax.to("#mapLeft3Container", 0.7, {ease: Power2.easeInOut,ease: Power2.easeInOut, left: 100, opacity: 0}))
-    MapsTL.add(TweenMax.to("#mapRight3Container", 0.7, {ease: Power2.easeInOut, right: 100, opacity: 0, delay: -0.7}))
-    MapsTL.add(TweenMax.to("#mapLeft2Container", 0.7, {ease: Power2.easeInOut, left: 125, delay: -0.4}))
-    MapsTL.add(TweenMax.to("#mapLeft1Container", 0.7, {ease: Power2.easeInOut, left: 465, delay: -0.7}))
-    MapsTL.add(TweenMax.to("#mapMiddleContainer", 0.7, {ease: Power2.easeInOut,left: 805, delay: -0.7}))
-    MapsTL.add(TweenMax.to("#mapRight1Container", 0.7, {ease: Power2.easeInOut, right: 465, delay: -0.7}))
-    MapsTL.add(TweenMax.to("#mapRight2Container", 0.7, {ease: Power2.easeInOut, right: 125, delay: -0.7}))
-    animSetWidths(300, -385);
-    
-}
-
-function transition5to7() {
-    MapsTL.add(TweenMax.to("#mapLeft2Container", 0.7, {ease: Power2.easeInOut,left: 365}))
-    MapsTL.add(TweenMax.to("#mapLeft1Container", 0.7, {ease: Power2.easeInOut,left: 605, delay: -0.7}))
-    MapsTL.add(TweenMax.to("#mapMiddleContainer", 0.7, {ease: Power2.easeInOut,left: 845, delay: -0.7}))
-    MapsTL.add(TweenMax.to("#mapRight1Container", 0.7, {ease: Power2.easeInOut,right: 605, delay: -0.7}))
-    MapsTL.add(TweenMax.to("#mapRight2Container", 0.7, {ease: Power2.easeInOut,right: 365, delay: -0.7}))
-    animSetWidths(220, -425);
-    MapsTL.add(TweenMax.to("#mapLeft3Container", 0.7, {left: 125, opacity: 1, delay: -0.15}))
-    MapsTL.add(TweenMax.to("#mapRight3Container", 0.7, {right: 125, opacity: 1, delay: -0.7}));
 }
 
 function animSetWidths(width, imageRight) {
