@@ -206,8 +206,18 @@ function updateMapSelectText() {
     }
 }
 
-mapCount.on('change', (newValue, OldValue) => {
+nodecg.listenFor("transitionComplete", message => {
     disableButtons();
+});
+
+mapCount.on('change', (newValue, OldValue) => {
+    if (OldValue == undefined) {
+        disableButtons();
+    } else {
+        show3Maps.disabled = true;
+        show5Maps.disabled = true;
+        show7Maps.disabled = true;
+    }
     updateMapSelectText();
     updateHiders();
 });
