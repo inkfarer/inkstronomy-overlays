@@ -146,6 +146,8 @@ function transitionXtoY(newValue, oldValue) {
     var delay = -0.7;
     var delayHide = -0.4;
     var delayShow = -0.15;
+    var ease = "Power2.easeInOut";
+    var ease2 = "Power2.easeOut";
     //probably an awful way to do this
     //set animation parameters
     if (newValue == 3) {
@@ -172,6 +174,7 @@ function transitionXtoY(newValue, oldValue) {
         styleLR2 = 125;
         delay2 = delay;
         delay3 = delayHide;
+        ease2 = "Power2.easeInOut";
     } else if (newValue == 7 && oldValue == 5) {
         delay2 = delay;
         delay3 = delayShow;
@@ -190,19 +193,18 @@ function transitionXtoY(newValue, oldValue) {
         styleLR2 = 100;
         delay3 = 0;
     }
-    var ease = "Power2.easeInOut";
-    var ease2 = "Power2.easeOut";
-    var ease3 = "Power2.easeIn";
     //actual animation happens somewhere over here
     if (oldValue > newValue) {
-        if (oldValue == 7) { moveContainers3(0, 100, ease, 0, delay); }
-        moveContainers2(styleOpac2, styleLR2, ease, delay3, delay);
+        //reduce the amount of containers
+        if (oldValue == 7) { moveContainers3(0, 100, ease2, 0, delay); }
+        moveContainers2(styleOpac2, styleLR2, ease2, delay3, delay);
         moveContainers1Mid(styleLR1, styleLRMid, ease, delay, delay2);
         animSetWidths(animWidth, animWidthPic, ease);
         MapsTL.to({}, 0.1, {delay: -0.1, onComplete: function() {
             nodecg.sendMessage("transitionComplete");
         }});
     } else {
+        //increase
         if (oldValue == 3) {
             MapsTL.to({}, 0.1, {delay: -0.1, onComplete: function() {
                 mapLeft2Container.style.left = animOldPos;
@@ -212,8 +214,8 @@ function transitionXtoY(newValue, oldValue) {
         if (oldValue == 5) { moveContainers2(1, 365, ease, 0, delay); }
         moveContainers1Mid(styleLR1, styleLRMid, ease, delay, delay2);
         animSetWidths(animWidth, animWidthPic, ease);
-        if (oldValue == 3) { moveContainers2(1, styleLR2, ease, delayShow, delay); }
-        if (newValue == 7) { moveContainers3(1, 125, ease, delay3, delay); }
+        if (oldValue == 3) { moveContainers2(1, styleLR2, ease2, delayShow, delay); }
+        if (newValue == 7) { moveContainers3(1, 125, ease2, delay3, delay); }
         MapsTL.to({}, 0.1, {delay: -0.1, onComplete: function() {
             nodecg.sendMessage("transitionComplete");
         }});
