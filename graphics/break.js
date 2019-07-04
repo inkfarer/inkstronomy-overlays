@@ -148,59 +148,106 @@ mapCount.on('change', (newValue, oldValue) => {
 });
 
 function transitionXtoY(newValue, oldValue) {
-    /*var styleLR1, styleLR2, styleLR3, styleLRMid;
+    var styleOpac2, styleLR2, styleLR1, styleLRMid, delay2, delay3, animWidth, animWidthPic, animOldPos;
+    var delay = -0.7;
+    var delayHide = -0.4;
+    var delayShow = -0.15;
+    if (newValue == 3) {
+        animWidth = 400;
+        animWidthPic = -340;
+        styleLR1 = 295;
+        styleLRMid = 755;
+        delay2 = delayHide;
+    }
     if (newValue == 5 && oldValue == 7) {
-        styleLR3 = 100;
+        styleOpac2 = 1;
         styleLR2 = 125;
+        delay2 = delay;
+        delay3 = delayHide;
+        animWidth = 300;
+        animWidthPic = -385;
         styleLR1 = 465;
         styleLRMid = 805;
     } else if (newValue == 7 && oldValue == 5) {
-        
+        styleLRMid = 845;
+        styleLR1 = 605;
+        delay2 = delay;
+        delay3 = delayShow;
+        animWidth = 220;
+        animWidthPic = -425;
     } else if (newValue == 7 && oldValue == 3) {
-        
+        animOldPos = "340px";
+        styleLRMid = 845;
+        styleLR1 = 605;
+        delay2 = 0;
+        delay3 = delay;
+        animWidth = 220;
+        animWidthPic = -425;
+        styleLR2 = 365;
     } else if (newValue == 3 && oldValue == 7) {
-        
+        styleOpac2 = 0;
+        styleLR2 = 340;
+        delay3 = delay;
     } else if (newValue == 5 && oldValue == 3) {
-        
+        animOldPos = "100px";
+        delay2 = 0;
+        styleLR1 = 465;
+        styleLRMid = 805;
+        animWidth = 300;
+        animWidthPic = -385;
+        styleLR2 = 125;
     } else if (newValue == 3 && oldValue == 5) {
+        styleOpac2 = 0;
+        styleLR2 = 100;
+        delay3 = 0;
         
-    }*/
+    }
     if (oldValue > newValue) {
-        if (newValue == 3 && oldValue == 7) {
-            moveContainers3(0, 100, "Power2.easeInOut", 0, -0.7);
-            moveContainers2(0, 340, "Power2.easeInOut", -0.7, -0.7);
-            moveContainers1Mid(295, 755, "Power2.easeInOut", -0.7, -0.4);
+        /*if (newValue == 3 && oldValue == 7) {
+            moveContainers3(0, 100, "Power2.easeInOut", 0, delay);
+            moveContainers2(0, 340, "Power2.easeInOut", delay, delay);
+            moveContainers1Mid(295, 755, "Power2.easeInOut", delay, -0.4);
             animSetWidths(400, -340);
         } else if (newValue == 5 && oldValue == 7) {
-            moveContainers3(0, 100, "Power2.easeInOut", 0, -0.7);
-            moveContainers2(1, 125, "Power2.easeInOut", -0.4, -0.7);
-            moveContainers1Mid(465, 805, "Power2.easeInOut", -0.7, -0.7);
+            moveContainers3(0, 100, "Power2.easeInOut", 0, delay);
+            moveContainers2(1, 125, "Power2.easeInOut", -0.4, delay);
+            moveContainers1Mid(465, 805, "Power2.easeInOut", delay, delay);
             animSetWidths(300, -385);
         } else if (newValue == 3 && oldValue == 5) {
-            moveContainers2(0, 100, "Power2.easeInOut", 0, -0.7);
-            moveContainers1Mid(295, 755, "Power2.easeInOut", -0.7, -0.4);
+            moveContainers2(0, 100, "Power2.easeInOut", 0, delay);
+            moveContainers1Mid(295, 755, "Power2.easeInOut", delay, -0.4);
             animSetWidths(400, -340);
-        }
+        }*/
+        if (oldValue == 7) { moveContainers3(0, 100, "Power2.easeInOut", 0, delay); }
+        moveContainers2(styleOpac2, styleLR2, "Power2.easeInOut", delay3, delay);
+        moveContainers1Mid(styleLR1, styleLRMid, "Power2.easeInOut", delay, delay2);
+        animSetWidths(animWidth, animWidthPic);
     } else {
-        if (newValue == 7 && oldValue == 3) {
-            mapLeft2Container.style.left = "340px";
-            mapRight2Container.style.right = "340px";
-            moveContainers1Mid(605, 845, "Power2.easeInOut", -0.7, 0);
-            animSetWidths(220, -425);
-            moveContainers2(1, 365, "Power2.easeInOut", -0.15, -0.7);
-            moveContainers3(1, 125, "Power2.easeInOut", -0.7, -0.7);
-        } else if (newValue == 7 && oldValue == 5) {
-            moveContainers2(1, 365, "Power2.easeInOut", 0, -0.7);
-            moveContainers1Mid(605, 845, "Power2.easeInOut", -0.7, -0.7);
-            animSetWidths(220, -425);
-            moveContainers3(1, 125, "Power2.easeInOut", -0.15, -0.7);
-        } else if (newValue == 5 && oldValue == 3) {
-            mapLeft2Container.style.left = "100px";
-            mapRight2Container.style.right = "100px";
-            moveContainers1Mid(465, 805, "Power2.easeInOut", -0.7, 0);
-            animSetWidths(300, -385);
-            moveContainers2(1, 125, "Power2.easeInOut", -0.15, -0.7);
+        if (oldValue == 3) {
+            mapLeft2Container.style.left = animOldPos;
+            mapRight2Container.style.right = animOldPos;
         }
+        if (oldValue == 5) { moveContainers2(1, 365, "Power2.easeInOut", 0, delay); }
+        moveContainers1Mid(styleLR1, styleLRMid, "Power2.easeInOut", delay, delay2);
+        animSetWidths(animWidth, animWidthPic);
+        if (oldValue == 3) { moveContainers2(1, styleLR2, "Power2.easeInOut", delayShow, delay); }
+        if (newValue == 7) { moveContainers3(1, 125, "Power2.easeInOut", delay, delay); }
+
+        /*if (newValue == 7 && oldValue == 3) {
+            moveContainers1Mid(605, 845, "Power2.easeInOut", delay, 0);
+            animSetWidths(220, -425);
+            moveContainers2(1, 365, "Power2.easeInOut", -0.15, delay);
+            moveContainers3(1, 125, "Power2.easeInOut", delay, delay);
+        } else if (newValue == 7 && oldValue == 5) {
+            moveContainers2(1, 365, "Power2.easeInOut", 0, delay);
+            moveContainers1Mid(605, 845, "Power2.easeInOut", delay, delay);
+            animSetWidths(220, -425);
+            moveContainers3(1, 125, "Power2.easeInOut", -0.15, delay);
+        } else if (newValue == 5 && oldValue == 3) {
+            moveContainers1Mid(465, 805, "Power2.easeInOut", delay, 0);
+            animSetWidths(300, -385);
+            moveContainers2(1, 125, "Power2.easeInOut", -0.15, delay);
+        }*/
     }
 }
 
