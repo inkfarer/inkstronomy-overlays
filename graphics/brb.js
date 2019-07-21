@@ -58,6 +58,10 @@ function textAnim(newText, element, BGelement) {
     } else {
         calcWidth = measureText(newText, "'Montserrat', sans-serif", "2.8em") + 10;
     }
+    var maxWidth = document.getElementById(element).getAttribute("max-width");
+    if (calcWidth > maxWidth) {
+        calcWidth = parseInt(maxWidth) + 10;
+    }
     var songTimeline = new TimelineMax();
     songTimeline.add(TweenMax.to("#" + element, 0.5, {bottom: -65, ease: Power2.easeIn, onComplete: function() {
         document.getElementById(element).text = newText;
