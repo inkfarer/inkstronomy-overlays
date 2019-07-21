@@ -10,21 +10,6 @@
 			font-family: 'Montserrat', sans-serif;
 			color: white;
 		}
-		#song {
-			bottom: -2px;
-			right: 0px;
-			width: 1820px;
-			text-align: center;
-			font-size: 3em;
-		}
-		#musicBG {
-			position: absolute;
-			bottom: 35px;
-			width: 1820px;
-			right: 60px;
-			height: 3.9em;
-			overflow: hidden;
-        }
         #logo {
             position: absolute;
             top: 50%;
@@ -70,6 +55,7 @@
         #smallTextBG {
             right: 75px;
             bottom: 285px;
+            opacity: 1;
         }
         #socialBG {
             right: 138px;
@@ -102,11 +88,34 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
+        #musicIcon {
+			position: absolute;
+			right: 75px;
+			bottom: 115px;
+			color: black;
+			height: 63px;
+			background-color: white;
+			width: 63px;
+			font-size: 3em;
+			text-align: center;
+			font-weight: 900;
+			line-height: 65px;
+        }
+        #musicBG {
+			position: absolute;
+			bottom: 115px;
+			width: 500px;
+			right: 138px;
+			background-color: rgba(0, 0, 0, 0.5);
+			height: 3.9em;
+            overflow: hidden;
+            padding-left: 15px;
+        }
     </style>
 </head>
 <body style="background: linear-gradient(0deg, rgba(124,4,156,1) 0%, rgba(29,7,88,1) 50%, rgba(8,2,47,1) 100%)">
-    <div id="musicBG">
-		<sc-fitted-text max-width="1820" text="♫ whew lad looks like the overlay broke ♫" id="song" class="text" align="center"></sc-fitted-text>
+    <div id="musicBG" class="underline">
+		<sc-fitted-text max-width="1820" text="whew lad looks like the overlay broke" id="song" class="smallText" align="right"></sc-fitted-text>
     </div>
     <img id="logo" src="inky-logo-upscaled.png">
     <img id="stars" src="stars.png">
@@ -120,6 +129,7 @@
     <div id="socialBG" class="underline backG">
         <sc-fitted-text id="socialText" class="smallText" text="(social media info goes here...)"></sc-fitted-text>
     </div>
+    <div id="musicIcon">♫</div>
     <div id="measurer"></div>
     <script type="text/javascript" src="brb.js"></script>
 </body>

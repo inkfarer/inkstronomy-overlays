@@ -4,23 +4,16 @@ const mSongEnabled = nodecg.Replicant("mSongEnabled");
 const songHidden = nodecg.Replicant("songHidden");
 const bigTextValue = nodecg.Replicant("bigTextValue");
 const breakFlavorText = nodecg.Replicant("breakFlavorText");
-
-function songTextAnim(newText) {
-    var songTimeline = new TimelineMax();
-    songTimeline.add(TweenMax.to("#song", 0.25, {opacity: 0, onComplete: function() {
-        song.text = newText;
-    }}))
-    .add(TweenMax.to("#song", 0.25, {opacity: 1}));
-} 
+var ignoreMe = measureText("this is here to hopefully fix a bug i've been seeing every now and then, not sure if it fixes anything");
 
 function updateSongText() {
     if (mSongEnabled.value) {
-        songTextAnim("♫ " + manualsong.value + " ♫");
+        textAnim(manualsong.value, "song", "musicBG");
     } else {
         if (nowPlaying.value.artist === undefined && nowPlaying.value.song === undefined) {
-            songTextAnim("♫ Nothing appears to be playing at the moment. ♫");
+            textAnim("Nothing appears to be playing at the moment.", "song", "musicBG");
         } else {
-            songTextAnim("♫ " + nowPlaying.value.artist + " - " + nowPlaying.value.song + " ♫");
+            textAnim(nowPlaying.value.artist + " - " + nowPlaying.value.song, "song", "musicBG");
         }
     }
 }
@@ -45,9 +38,9 @@ mSongEnabled.on("change", (newValue, oldValue) => {
 
 songHidden.on("change", (newValue, oldValue) => {
     if (newValue) {
-        TweenMax.to("#musicBG", 0.5, { opacity: 0 });
+        TweenMax.to(["#musicBG", "#musicIcon"], 0.5, { opacity: 0 });
     } else {
-        TweenMax.to("#musicBG", 0.5, { opacity: 1 });
+        TweenMax.to(["#musicBG", "#musicIcon"], 0.5, { opacity: 1 });
     }
 });
 
@@ -58,7 +51,7 @@ function measureText(text, font, fontSize) {
     return measurer.getBoundingClientRect().width;
 }
 
-function textAnim(newText, element, BGelement, callback) {
+function textAnim(newText, element, BGelement) {
     var calcWidth;
     if (newText == "") {
         calcWidth = 0;
