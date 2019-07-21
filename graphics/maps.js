@@ -1,9 +1,5 @@
 const message = nodecg.Replicant('message');
 const mapHidden = nodecg.Replicant('mapHidden');
-const nowPlaying = nodecg.Replicant("nowPlaying");
-const manualsong = nodecg.Replicant("manualSong");
-const mSongEnabled = nodecg.Replicant("mSongEnabled");
-const songHidden = nodecg.Replicant("songHidden");
 const mapCount = nodecg.Replicant('mapCount');
 const selectedMaps = nodecg.Replicant('selectedMaps', {defaultValue: ["", "", "", "", "", "", ""]});
 const finalScores = nodecg.Replicant('finalScores', {defaultValue: ["", "", "", "", "", "", ""]});
@@ -330,49 +326,3 @@ function animHideShowMaps(bool, bool2) {
         }}));
     }
 }
-
-function songTextAnim(newText) {
-    var songTimeline = new TimelineMax();
-    songTimeline.add(TweenMax.to("#song", 0.5, {opacity: 0, ease: Power2.easeIn, onComplete: function() {
-        song.text = newText;
-    }}))
-    .add(TweenMax.to("#song", 0.5, {opacity: 1}));
-} 
-
-function updateSongText() {
-    if (mSongEnabled.value) {
-        songTextAnim("♫ " + manualsong.value + " ♫");
-    } else {
-        if (nowPlaying.value.artist === undefined && nowPlaying.value.song === undefined) {
-            songTextAnim("♫ Nothing appears to be playing at the moment. ♫");
-        } else {
-            songTextAnim("♫ " + nowPlaying.value.artist + " - " + nowPlaying.value.song + " ♫");
-        }
-    }
-}
-
-nowPlaying.on("change", (newValue, oldValue) => {
-    if (newValue !== oldValue && !mSongEnabled.value) {
-        updateSongText();
-    }
-});
-
-manualsong.on("change", (newValue, oldValue) => {
-    if (newValue !== oldValue && mSongEnabled.value) {
-        updateSongText();
-    }
-});
-
-mSongEnabled.on("change", (newValue, oldValue) => {
-    if (newValue !== oldValue) {
-        updateSongText();
-    }
-});
-
-songHidden.on("change", (newValue, oldValue) => {
-    if (newValue) {
-        TweenMax.to("#musicBG", 0.5, { opacity: 0 });
-    } else {
-        TweenMax.to("#musicBG", 0.5, { opacity: 1 });
-    }
-});

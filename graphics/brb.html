@@ -1,0 +1,126 @@
+<html>
+<head>
+    <link rel="import" href="../bower_components/sc-fitted-text/sc-fitted-text.html">
+	<script src="../bower_components/gsap/src/minified/TimelineMax.min.js"></script>
+	<script src="../bower_components/gsap/src/minified/TweenMax.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">
+    <style>
+        .text {
+			position: absolute;
+			font-family: 'Montserrat', sans-serif;
+			color: white;
+		}
+		#song {
+			bottom: -2px;
+			right: 0px;
+			width: 1820px;
+			text-align: center;
+			font-size: 3em;
+		}
+		#musicBG {
+			position: absolute;
+			bottom: 35px;
+			width: 1820px;
+			right: 60px;
+			height: 3.9em;
+			overflow: hidden;
+        }
+        #logo {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 0;
+            width: 900px;
+            left: 75px;
+        }
+        #bigTitle {
+            font-family: "lemon/milk";
+            font-size: 12em;
+            color: white;
+            text-align: right;
+            position: absolute;
+            top: 250px;
+            right: 75px;
+        }
+        span {
+            background-color: rgba(0, 0, 0, 0.5);
+            height: 75%;
+            line-height: 0.60;
+            display: inline-block;
+            padding: 50px 35px;
+        }
+        .underline {
+            border-bottom: 5px solid white;
+        }
+        #measurer {
+			font-family: 'Montserrat', sans-serif;
+			font-size: 2.8em;
+			z-index: -99999; /*begone*/
+			position: absolute;
+			visibility: hidden;
+		}
+        .smallText {
+            position: absolute;
+            bottom: 1px;
+            right: 15px;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8em;
+        }
+        #smallTextBG {
+            right: 75px;
+            bottom: 285px;
+        }
+        #socialBG {
+            right: 138px;
+            bottom: 200px;
+        }
+        .backG {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 0 10px;
+            height: 63px;
+            overflow: hidden;
+        }
+        #stars {
+			position: absolute;
+			width: 1920px;
+			height: 1080px;
+			z-index: -1;
+        }
+        #socialLogoBG {
+            position: absolute;
+            bottom: 200px;
+            right: 75px;
+            width: 63px;
+            height: 63px;
+            background-color: white;
+        }
+        #socialLogo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body style="background: linear-gradient(0deg, rgba(124,4,156,1) 0%, rgba(29,7,88,1) 50%, rgba(8,2,47,1) 100%)">
+    <div id="musicBG">
+		<sc-fitted-text max-width="1820" text="♫ whew lad looks like the overlay broke ♫" id="song" class="text" align="center"></sc-fitted-text>
+    </div>
+    <img id="logo" src="inky-logo-upscaled.png">
+    <img id="stars" src="stars.png">
+    <div id="bigTitle"><span id="span1">quazar</span><br><span id="span2" class="underline">quads</span></div>
+    <div id="smallTextBG" class="underline backG">
+        <sc-fitted-text id="brbText" class="smallText" text="We will be right back!"></sc-fitted-text>
+    </div>
+    <div id="socialLogoBG">
+        <img id="socialLogo" src="logoTwitterBlack.png" height="40">
+    </div>
+    <div id="socialBG" class="underline backG">
+        <sc-fitted-text id="socialText" class="smallText" text="(social media info goes here...)"></sc-fitted-text>
+    </div>
+    <div id="measurer"></div>
+    <script type="text/javascript" src="brb.js"></script>
+</body>
+</html>

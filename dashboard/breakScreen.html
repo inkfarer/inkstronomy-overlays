@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="../bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+    <link rel="import" href="../bower_components/paper-button/paper-button.html">
+    <link rel="import" href="../bower_components/paper-input/paper-input.html">
+	<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+    <custom-style>
+		<style include="iron-flex iron-flex-alignment">
+            paper-button {
+				margin: 2px;
+				color: #FFFFFF;
+				font-family: 'Roboto', 'Noto', sans-serif;
+				font-weight: normal;
+				font-size: 14px;
+                -webkit-font-smoothing: antialiased;
+                background-color: #645CA1;
+            }
+            paper-input {
+				margin-top: -10px;
+				margin-left: 5px;
+				margin-right: 5px;
+				--primary-text-color: #FFFFFF;
+				--paper-input-container-focus-color: #00BEBE;
+			}
+            paper-button[disabled] {
+				color: #A9AAA9;
+				background-color: #181E29 !important;
+            }
+            #toggleBigTextTest {
+                margin-left: 78px;
+            }
+            #toggleShowSocials {
+                margin-left: 73px;
+            }
+            #socialsLabel {
+                font-family: 'Roboto', 'Noto', sans-serif;
+                text-align: left;
+                color: white;
+                font-weight: bold;
+                font-size: 1em;
+                border-bottom: 1px solid white;
+                margin-bottom: 5px;
+            }
+            #toggleShowSocials, #toggleHideSocials {
+                min-width: 117px;
+            }
+        </style>
+    </custom-style>
+</head>
+<body style="background-color: #2F3A4F">
+    <div id="toggleBigText" class="layout horizontal">
+        <paper-button raised id="toggleBigTextTest">test stream</paper-button>
+        <paper-button raised id="toggleBigTextQQ">quazar quads</paper-button>
+    </div>
+    <paper-input id="breakFlavorInput" label="Flavor Text"></paper-input>
+    <script type="text/javascript" src="breakscreen.js"></script>
+</body>
+</html>

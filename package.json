@@ -24,7 +24,7 @@
         "title": "Scores & Team names",
         "width": 2,
         "file": "scoreboard.html",
-        "headerColor": "#00BEBE",
+        "headerColor": "#262F40",
         "workspace": "inkstronomy"
       },
       {
@@ -32,7 +32,7 @@
         "title": "Twitter Display",
         "width": 2,
         "file": "socials.html",
-        "headerColor": "#00BEBE",
+        "headerColor": "#262F40",
         "workspace": "inkstronomy"
       },
       {
@@ -40,7 +40,7 @@
         "title": "Music",
         "width": 3,
         "file": "music.html",
-        "headerColor": "#00BEBE",
+        "headerColor": "#262F40",
         "workspace": "inkstronomy"
       },
       {
@@ -48,7 +48,15 @@
         "title": "Map Select",
         "width": 8,
         "file": "maps.html",
-        "headerColor": "#00BEBE",
+        "headerColor": "#262F40",
+        "workspace": "inkstronomy"
+      },
+      {
+        "name": "breakScreen",
+        "title": "Break Screen Controls",
+        "width": 3,
+        "file": "breakScreen.html",
+        "headerColor": "#262F40",
         "workspace": "inkstronomy"
       }
     ],
