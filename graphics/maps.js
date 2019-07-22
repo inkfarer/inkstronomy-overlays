@@ -32,7 +32,8 @@ var mapNameToImagePath = {"Ancho-V Games": "stages/S2_Stage_Ancho-V_Games.png",
 "Wahoo World":"stages/S2_Stage_Wahoo_World.png",
 "Walleye Warehouse":"stages/S2_Stage_Walleye_Warehouse.png",
 "We don't know.":"question-mark.png",
-"":"question-mark.png"};
+"":"question-mark.png",
+"Skipper Pavilion":"stages/S2_Stage_Skipper_Pavilion.png"};
 const selectedModes = nodecg.Replicant('selectedModes', {defaultValue: ["", "", "", "", "", "", ""]});
 var mapImageDisplays = ["mapLeft3Display", "mapLeft2Display", "mapLeft1Display", "mapMiddleDisplay", "mapRight1Display", "mapRight2Display", "mapRight3Display"];
 var mapNameTexts = ["mapLeft3NameText", "mapLeft2NameText", "mapLeft1NameText", "mapMiddleNameText", "mapRight1NameText", "mapRight2NameText", "mapRight3NameText"];

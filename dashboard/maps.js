@@ -245,7 +245,8 @@ var splatMaps1 = ["We don't know.",
 "Sturgeon Shipyard",
 "The Reef",
 "Wahoo World",
-"Walleye Warehouse"];
+"Walleye Warehouse", 
+"Skipper Pavilion"];
 
 var splatModes1 = ["???",
 "Clam Blitz",
