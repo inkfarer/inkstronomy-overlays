@@ -2,6 +2,10 @@
 
 A [NodeCG](http://github.com/nodecg/nodecg) bundle made for Inkstronomy tournament livestreams.
 
+# Notice
+
+**Inkstronomy, the community these graphics were built for, has been abandoned by it's core staff team as of December 13th, 2019. I do not condone joining Inkstronomy in it's current state.**
+
 ## Screenshots
 
 * [Dashboard](https://i.imgur.com/ODbymgQ.png)
